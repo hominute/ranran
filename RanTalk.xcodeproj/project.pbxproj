@@ -7,23 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFC84A18CF646C4FA3982F0A /* Pods_RanTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60B984CFD3E4D7BD949E9F1 /* Pods_RanTalk.framework */; };
 		EACF7ECD21398BA200939BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECC21398BA200939BB7 /* AppDelegate.swift */; };
-		EACF7ECF21398BA200939BB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECE21398BA200939BB7 /* ViewController.swift */; };
+		EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECE21398BA200939BB7 /* SigninViewController.swift */; };
 		EACF7ED221398BA200939BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF7ED021398BA200939BB7 /* Main.storyboard */; };
 		EACF7ED521398BA200939BB7 /* RanTalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ED321398BA200939BB7 /* RanTalk.xcdatamodeld */; };
 		EACF7ED721398BA200939BB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACF7ED621398BA200939BB7 /* Assets.xcassets */; };
 		EACF7EDA21398BA200939BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF7ED821398BA200939BB7 /* LaunchScreen.storyboard */; };
+		EACF7EE2213A703300939BB7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EE1213A703300939BB7 /* SignupViewController.swift */; };
+		EACF7EE4213A742E00939BB7 /* FirstApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EE3213A742E00939BB7 /* FirstApi.swift */; };
+		EACF7EE7213A746300939BB7 /* SecondApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EE6213A746300939BB7 /* SecondApi.swift */; };
+		EACF7EEB213A762000939BB7 /* MyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EEA213A762000939BB7 /* MyDTO.swift */; };
+		EACF7EED213A7A1B00939BB7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EEC213A7A1B00939BB7 /* Extensions.swift */; };
+		EACF7EF1213A802500939BB7 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EF0213A802500939BB7 /* ListTableViewController.swift */; };
+		EACF7EF5213A809700939BB7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EF4213A809700939BB7 /* ListTableViewCell.swift */; };
+		EACF7EF9213A812B00939BB7 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EF8213A812B00939BB7 /* AdTableViewCell.swift */; };
+		EACF7EFB213A814300939BB7 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFA213A814300939BB7 /* UserTableViewCell.swift */; };
+		EACF7EFD213A82D400939BB7 /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFC213A82D400939BB7 /* MyData.swift */; };
+		EACF7F00213A8D9700939BB7 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */; };
+		EACF7F02213A8E3900939BB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */; };
+		EACF7F04213A90D900939BB7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F03213A90D900939BB7 /* ChatViewController.swift */; };
+		EACF7F06213A90FB00939BB7 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F05213A90FB00939BB7 /* MessageTableViewCell.swift */; };
+		EACF7F08213A910500939BB7 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F07213A910500939BB7 /* MyTableViewCell.swift */; };
+		EACF7F0A213A911000939BB7 /* OtherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F09213A911000939BB7 /* OtherTableViewCell.swift */; };
+		EACF7F0C213A91DF00939BB7 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F0B213A91DF00939BB7 /* MessageData.swift */; };
+		EACF7F0F213BC56F00939BB7 /* InviteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F0E213BC56F00939BB7 /* InviteProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1456A13C75448EBE01408515 /* Pods-RanTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RanTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk.debug.xcconfig"; sourceTree = "<group>"; };
+		4D5A10B7171D802C2C1EF61B /* Pods-RanTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RanTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk.release.xcconfig"; sourceTree = "<group>"; };
+		C60B984CFD3E4D7BD949E9F1 /* Pods_RanTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RanTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF7EC921398BA200939BB7 /* RanTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RanTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF7ECC21398BA200939BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EACF7ECE21398BA200939BB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EACF7ECE21398BA200939BB7 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		EACF7ED121398BA200939BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EACF7ED421398BA200939BB7 /* RanTalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RanTalk.xcdatamodel; sourceTree = "<group>"; };
 		EACF7ED621398BA200939BB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EACF7ED921398BA200939BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACF7EDB21398BA200939BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EACF7EE1213A703300939BB7 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EACF7EE3213A742E00939BB7 /* FirstApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstApi.swift; sourceTree = "<group>"; };
+		EACF7EE6213A746300939BB7 /* SecondApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondApi.swift; sourceTree = "<group>"; };
+		EACF7EEA213A762000939BB7 /* MyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDTO.swift; sourceTree = "<group>"; };
+		EACF7EEC213A7A1B00939BB7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EACF7EF0213A802500939BB7 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		EACF7EF4213A809700939BB7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7EF8213A812B00939BB7 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7EFA213A814300939BB7 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7EFC213A82D400939BB7 /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
+		EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7F03213A90D900939BB7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EACF7F05213A90FB00939BB7 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7F07213A910500939BB7 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7F09213A911000939BB7 /* OtherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTableViewCell.swift; sourceTree = "<group>"; };
+		EACF7F0B213A91DF00939BB7 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		EACF7F0E213BC56F00939BB7 /* InviteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +71,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC84A18CF646C4FA3982F0A /* Pods_RanTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0882F328E3932FB8B82D47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C60B984CFD3E4D7BD949E9F1 /* Pods_RanTalk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7B1F46499C4F3A354C7A97D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1456A13C75448EBE01408515 /* Pods-RanTalk.debug.xcconfig */,
+				4D5A10B7171D802C2C1EF61B /* Pods-RanTalk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EACF7EC021398BA100939BB7 = {
 			isa = PBXGroup;
 			children = (
 				EACF7ECB21398BA200939BB7 /* RanTalk */,
 				EACF7ECA21398BA200939BB7 /* Products */,
+				A7B1F46499C4F3A354C7A97D /* Pods */,
+				3D0882F328E3932FB8B82D47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +117,72 @@
 			isa = PBXGroup;
 			children = (
 				EACF7ECC21398BA200939BB7 /* AppDelegate.swift */,
-				EACF7ECE21398BA200939BB7 /* ViewController.swift */,
+				EACF7F0D213A91E600939BB7 /* Data */,
+				EACF7EE5213A743A00939BB7 /* UtilityFunc */,
 				EACF7ED021398BA200939BB7 /* Main.storyboard */,
+				EACF7EEE213A7DA600939BB7 /* SignIn */,
+				EACF7EEF213A7DC600939BB7 /* List */,
+				EACF7EFE213A8B0A00939BB7 /* Chat */,
 				EACF7ED621398BA200939BB7 /* Assets.xcassets */,
 				EACF7ED821398BA200939BB7 /* LaunchScreen.storyboard */,
 				EACF7EDB21398BA200939BB7 /* Info.plist */,
 				EACF7ED321398BA200939BB7 /* RanTalk.xcdatamodeld */,
 			);
 			path = RanTalk;
+			sourceTree = "<group>";
+		};
+		EACF7EE5213A743A00939BB7 /* UtilityFunc */ = {
+			isa = PBXGroup;
+			children = (
+				EACF7EEC213A7A1B00939BB7 /* Extensions.swift */,
+				EACF7EE3213A742E00939BB7 /* FirstApi.swift */,
+				EACF7EE6213A746300939BB7 /* SecondApi.swift */,
+				EACF7EEA213A762000939BB7 /* MyDTO.swift */,
+			);
+			path = UtilityFunc;
+			sourceTree = "<group>";
+		};
+		EACF7EEE213A7DA600939BB7 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				EACF7ECE21398BA200939BB7 /* SigninViewController.swift */,
+				EACF7EE1213A703300939BB7 /* SignupViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		EACF7EEF213A7DC600939BB7 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				EACF7EF0213A802500939BB7 /* ListTableViewController.swift */,
+				EACF7EF4213A809700939BB7 /* ListTableViewCell.swift */,
+				EACF7EFA213A814300939BB7 /* UserTableViewCell.swift */,
+				EACF7EF8213A812B00939BB7 /* AdTableViewCell.swift */,
+				EACF7F0E213BC56F00939BB7 /* InviteProtocol.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		EACF7EFE213A8B0A00939BB7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */,
+				EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */,
+				EACF7F03213A90D900939BB7 /* ChatViewController.swift */,
+				EACF7F05213A90FB00939BB7 /* MessageTableViewCell.swift */,
+				EACF7F07213A910500939BB7 /* MyTableViewCell.swift */,
+				EACF7F09213A911000939BB7 /* OtherTableViewCell.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		EACF7F0D213A91E600939BB7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EACF7EFC213A82D400939BB7 /* MyData.swift */,
+				EACF7F0B213A91DF00939BB7 /* MessageData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EACF7EDE21398BA200939BB7 /* Build configuration list for PBXNativeTarget "RanTalk" */;
 			buildPhases = (
+				8B5D91E189A73C5A3E0A6F8B /* [CP] Check Pods Manifest.lock */,
 				EACF7EC521398BA200939BB7 /* Sources */,
 				EACF7EC621398BA200939BB7 /* Frameworks */,
 				EACF7EC721398BA200939BB7 /* Resources */,
+				F0F846233B23EB5DD094DD7B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +253,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B5D91E189A73C5A3E0A6F8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RanTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0F846233B23EB5DD094DD7B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
+				"${BUILT_PRODUCTS_DIR}/StompClientLib/StompClientLib.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StompClientLib.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EACF7EC521398BA200939BB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EACF7ECF21398BA200939BB7 /* ViewController.swift in Sources */,
+				EACF7EF9213A812B00939BB7 /* AdTableViewCell.swift in Sources */,
+				EACF7EF5213A809700939BB7 /* ListTableViewCell.swift in Sources */,
+				EACF7F04213A90D900939BB7 /* ChatViewController.swift in Sources */,
+				EACF7F06213A90FB00939BB7 /* MessageTableViewCell.swift in Sources */,
+				EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */,
+				EACF7F08213A910500939BB7 /* MyTableViewCell.swift in Sources */,
+				EACF7EED213A7A1B00939BB7 /* Extensions.swift in Sources */,
+				EACF7EFB213A814300939BB7 /* UserTableViewCell.swift in Sources */,
+				EACF7EFD213A82D400939BB7 /* MyData.swift in Sources */,
+				EACF7EE4213A742E00939BB7 /* FirstApi.swift in Sources */,
+				EACF7EF1213A802500939BB7 /* ListTableViewController.swift in Sources */,
+				EACF7F0F213BC56F00939BB7 /* InviteProtocol.swift in Sources */,
+				EACF7EE7213A746300939BB7 /* SecondApi.swift in Sources */,
+				EACF7F0A213A911000939BB7 /* OtherTableViewCell.swift in Sources */,
+				EACF7EEB213A762000939BB7 /* MyDTO.swift in Sources */,
 				EACF7ED521398BA200939BB7 /* RanTalk.xcdatamodeld in Sources */,
+				EACF7F0C213A91DF00939BB7 /* MessageData.swift in Sources */,
+				EACF7EE2213A703300939BB7 /* SignupViewController.swift in Sources */,
+				EACF7F02213A8E3900939BB7 /* ChatTableViewCell.swift in Sources */,
 				EACF7ECD21398BA200939BB7 /* AppDelegate.swift in Sources */,
+				EACF7F00213A8D9700939BB7 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +463,7 @@
 		};
 		EACF7EDF21398BA200939BB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1456A13C75448EBE01408515 /* Pods-RanTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +482,7 @@
 		};
 		EACF7EE021398BA200939BB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D5A10B7171D802C2C1EF61B /* Pods-RanTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

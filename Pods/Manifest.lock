@@ -1,0 +1,24 @@
+PODS:
+  - Kingfisher (4.8.1)
+  - SocketRocket (0.5.1)
+  - StompClientLib (1.2.2):
+    - SocketRocket
+
+DEPENDENCIES:
+  - Kingfisher (~> 4.0)
+  - StompClientLib
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
+    - SocketRocket
+    - StompClientLib
+
+SPEC CHECKSUMS:
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  StompClientLib: 722379c85b96423de965245d2bb9e01e931ce7ed
+
+PODFILE CHECKSUM: 6625d2954512caeaa6ab90570e9e3a9c58952433
+
+COCOAPODS: 1.5.3
