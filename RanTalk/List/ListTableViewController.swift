@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Alamofire
 
-class ListTableViewController: UITableViewController, InviteProtocol {
+class ListTableViewController: UITableViewController, InviteProtocol{
 
     let heightOfheader : CGFloat = 44
     
@@ -41,17 +42,22 @@ class ListTableViewController: UITableViewController, InviteProtocol {
         
         
     }
+   
     
-    func inviteCallback(roomId:Int64) {
+    func inviteCallback(roomId: Int64) {
         print("yoooooooong")
+//        DispatchQueue.main.async {
+//
+//        }
         self.performSegue(withIdentifier: "gochat", sender: self)
         
         let uvc = self.storyboard?.instantiateViewController(withIdentifier: "hohoho") as! ChatViewController
         
         uvc.roomId = roomId
+//        self.navigationController?.performSegue(withIdentifier: "gochat", sender: self)
         
-        
-//        self.navigationController?.pushViewController(uvc!, animated: true)
+    
+//        self.navigationController?.pushViewController(uvc, animated: true)
     }
     
     override func viewDidLoad() {
@@ -139,13 +145,13 @@ class ListTableViewController: UITableViewController, InviteProtocol {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         
-        
+//        let cell2 = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
         let row = self.list[indexPath.row]
         let imageurl = row.Photo
-        let shormessage = row.ShortMessage
+       
         cell.userName.text = row.Nickname
         cell.friendId = row.userId!
-        
+        cell.shortMessage.text = row.ShortMessage
         cell.delegate = self
 
         

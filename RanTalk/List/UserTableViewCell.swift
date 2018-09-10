@@ -18,16 +18,17 @@ class UserTableViewCell: ListTableViewCell{
     
     var delegate: InviteProtocol?
     
-    
-    
+
+   
     
     @IBOutlet var userImage: UIImageView!
     
     @IBOutlet var shortMessage: UILabel!
     
     @IBAction func chatInvite(_ sender: Any) {
+
         
-        
+        self.delegate?.inviteCallback(roomId:2)
         let uds = UserDefaults.standard
 
 //        self.myId = uds.integer(forKey: "id")
@@ -40,40 +41,39 @@ class UserTableViewCell: ListTableViewCell{
             ] as [String : Any]
         
         
-        SecondApi.instance().makeAPICalls(url: url, params: bodyString, method: .POST, success: {(data, response, error, responsedata) in
-            // API call is Successfull
-            
-            let respondata = responsedata
-            self.delegate?.inviteCallback(roomId:2)
-            
-            DispatchQueue.main.async {
-                
-                if ((respondata.contains("message"))) {
-                    
-                    MyDTO().DTO(type: "message", repondata: respondata, userdatas: { (userdatad) in
-                        
-                        let errormessage = userdatad
-                        print("\(errormessage)")
-//                        self.displayMessage(userMessage: "\(errormessage)")
-                        
-                        
-                        
-                    }
-                    )
-                    
-                } else {
-                
-                    self.delegate?.inviteCallback(roomId:2)
-                }
-            }
-            
-            return
-            
-        }, failure: {(data, response, error) in
-            
-        }
-            
-        )
+//        SecondApi.instance().makeAPICalls(url: url, params: bodyString, method: .POST, success: {(data, response, error, responsedata) in
+//            // API call is Successfull
+//
+//            let respondata = responsedata
+//
+//            DispatchQueue.main.async {
+//
+//                if ((respondata.contains("message"))) {
+//
+//                    MyDTO().DTO(type: "message", repondata: respondata, userdatas: { (userdatad) in
+//
+//                        let errormessage = userdatad
+//                        print("\(errormessage)")
+////                        self.displayMessage(userMessage: "\(errormessage)")
+//
+//
+//
+//                    }
+//                    )
+//
+//                } else {
+//
+//                    self.delegate?.inviteCallback(roomId:2)
+//                }
+//            }
+//
+//            return
+//
+//        }, failure: {(data, response, error) in
+//
+//        }
+//
+//        )
         
         
     }
@@ -102,21 +102,7 @@ class UserTableViewCell: ListTableViewCell{
 
         // Configure the view for the selected state
     }
-    
-//    var roomId = Int64
-//    func inviteCallback(success:@escaping (Int64) -> Void) {
-//
-//        if let roomId = Int64 {
-//            success(roomId)
-//        }
-    
-            
-            
-            
-            
-        
-//       performSegue(withIdentifier: "logined", sender: self)
-        
+
     
     
 

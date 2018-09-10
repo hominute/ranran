@@ -6,15 +6,6 @@
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
-import Foundation
-
-//
-//  getrequest.swift
-//  TagLine
-//
-//  Created by KIM HO MIN on 7/26/18.
-//  Copyright © 2018 HOTO. All rights reserved.
-//
 
 import Foundation
 
@@ -38,6 +29,7 @@ class FirstApi: NSObject{
         return FirstApi()
     }
 
+    //            FirstApi.instance().makeAPICall(url: url, params:postString, method: .POST, success: { (data, response, error, responsedata) in
     
     func makeAPICall(url: String, params: String, method: HttpMethod, success:@escaping ( Data? ,HTTPURLResponse?  , NSError?, String ) -> Void, failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
         

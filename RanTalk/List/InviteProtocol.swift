@@ -8,4 +8,5 @@
 
 public protocol InviteProtocol {
     func inviteCallback(roomId:Int64)
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class MyDTO {
     
@@ -65,3 +66,5 @@ class MyDTO {
     
     
 }
+
+

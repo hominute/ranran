@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'RanTalk' do
@@ -7,4 +7,8 @@ target 'RanTalk' do
   # ...
   pod 'Kingfisher', '~> 4.0'
   pod 'StompClientLib'
+  pod 'Alamofire', '~> 4.7'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'ObjectMapper', '~> 3.1'
+  pod 'AlamofireObjectMapper', '~> 5.0'
 end

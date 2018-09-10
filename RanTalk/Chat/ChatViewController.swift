@@ -273,6 +273,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let content = apidata["content"] as! NSArray
                 
+                var messages = [MessageData]()
+                
                 for row in content {
                     
                     let r = row as! NSDictionary
@@ -281,14 +283,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     
                     print("\(self.list.count)")
-                    self.list.append(md)
+                    messages.append(md)
                     
-                    DispatchQueue.main.async {
-                        
-                        self.tableView.reloadData()
+                }
+                
+                self.list = messages + self.list
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    if (self.page == 0) {
                         self.scrollToBottom()
                     }
-                    
                 }
                 self.success = true
             }
@@ -316,9 +321,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if success == true {
             print("success status= \(success)")
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
             
             refreshControl.endRefreshing()
         }
