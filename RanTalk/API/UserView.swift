@@ -12,7 +12,7 @@ protocol UserView : NSObjectProtocol {
     
     func startLoading()
     func stopLoading()
-    func navigation()
+//    func navigation()
     func signInSuccessful(message : String)
     func signUpSuccessful(message : String)
     func errorOccurred(message : String)
