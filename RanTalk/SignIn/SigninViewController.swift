@@ -9,12 +9,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
 
 class SigninViewController: UIViewController {
     
 
 
-    let presenter  = UserPresenter(userService : UserAPI() )
+    let presenter  = UserPresenter(userApi : UserAPI() )
 
     @IBAction func testButton(_ sender: Any) {
         self.performSegue(withIdentifier: "logined", sender: self)
@@ -52,16 +53,16 @@ class SigninViewController: UIViewController {
                 "email" : "\(signinId.text!)"
                 ]
             
-            let baseurl = ""
+         
             let url = "https://dry-eyrie-61502.herokuapp.com/users/login"
             
             let postString = "email=\(signinId.text!)&password=\(signinPassword.text!)"
             
             
             let user = UserRequest(name : "null" , email : signinId.text! , password : signinPassword.text!)
-//            startLoading()
+
             presenter.onSignIn(request: user)
-            
+//            startLoading()
             
 //                .onSignIn(request: user)
             
@@ -205,6 +206,16 @@ class SigninViewController: UIViewController {
 }
 
 extension SigninViewController : UserView {
+    func apiCallback(response: BaseResponse) {
+        
+    }
+    
+    
+    func apiCallback() {
+        
+    
+    }
+    
     
     func startLoading() {
 //        viewProgress.isHidden = false

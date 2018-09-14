@@ -545,6 +545,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yDF-Ql-p91"/>
                     <connections>
+                        <outlet property="fullView" destination="5Qr-uI-sas" id="sbP-nO-2cp"/>
                         <outlet property="inputTextfield" destination="Ihf-Oy-Kuh" id="1sc-7E-WcQ"/>
                         <outlet property="inputmessageView" destination="YPK-4L-d6X" id="wDY-YU-9s0"/>
                         <outlet property="sendButtonOL" destination="pMA-2O-YQj" id="IMg-dO-QoV"/>

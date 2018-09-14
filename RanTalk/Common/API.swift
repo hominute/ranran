@@ -13,6 +13,7 @@ class API: NSObject {
     static let ROOT = "https://dry-eyrie-61502.herokuapp.com/"
     static let SIGNIN = ROOT+"/users/login"
     static let SIGNUP = ROOT+"/users/signup"
+    static let LIST = ROOT+"/users/"
     static let CHAT = ROOT+"/chats"
     static let INVITE = ROOT+"/chats/invite"
     static let ROOM = ROOT+"/chats/rooms"

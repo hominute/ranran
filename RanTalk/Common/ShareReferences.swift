@@ -12,6 +12,7 @@ class ShareReferences: NSObject {
     
     var user  = User()
     
+    
     public class var shared: ShareReferences {
         struct Static {
             static let instance: ShareReferences = ShareReferences()
@@ -22,9 +23,23 @@ class ShareReferences: NSObject {
     func setUser(user : User){
         self.user = user
     }
+    
     func getUser() -> User {
-        return user
+        return self.user
     }
     
+   
+    var list = [List]()
+    
+    func setList (list : [List]){
+        
+        self.list = list
+        
+    }
+    func getList() -> [List] {
+        
+        return list
+    }
+
     
 }

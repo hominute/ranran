@@ -1,20 +1,21 @@
 //
-//  User.swift
+//  List.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/10/18.
+//  Created by KIM HO MIN on 9/14/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-struct User : Mappable {
+struct List : Mappable {
     
-    var id : String?
+    var id : Int64?
     var email : String?
     var name : String?
-
+    var photo : String?
+    var point : Int64?
     
     init() {
         
@@ -29,7 +30,8 @@ struct User : Mappable {
         self.id <- map["id"]
         self.email <- map["email"]
         self.name <- map["name"]
-
+        self.photo <- map["photo"]
+        self.point <- map["point"]
     }
     
 }

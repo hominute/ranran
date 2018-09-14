@@ -9,12 +9,54 @@
 import UIKit
 import Alamofire
 
-class ListTableViewController: UITableViewController, InviteProtocol{
+
+class ListTableViewController: UITableViewController, InviteProtocol, UserView{
+    func apiCallback(response: BaseResponse) {
+        
+    }
+    
+    func startLoading() {
+        
+    }
+    
+    func stopLoading() {
+        
+    }
+    
+    func navigation() {
+        
+    }
+    
+    func signInSuccessful(message: String) {
+        
+    }
+    
+    func signUpSuccessful(message: String) {
+        
+    }
+    
+    func errorOccurred(message: String) {
+        
+    }
+    
+    func apiCallback() {
+        
+        let List = ShareReferences.shared.getList()
+        
+        self.list = List
+        self.tableView.reloadData()
+        
+        
+    }
+    
 
     let heightOfheader : CGFloat = 44
     
-    lazy var list: [MyData] = {
-        var datalist = [MyData]()
+    
+    let presenter  = UserPresenter(userApi : UserAPI() )
+    
+    lazy var list: [List] = {
+        var datalist = [List]()
         
         
         return datalist
@@ -30,7 +72,7 @@ class ListTableViewController: UITableViewController, InviteProtocol{
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
+        getList()
         
         let uds = UserDefaults.standard
         
@@ -63,60 +105,61 @@ class ListTableViewController: UITableViewController, InviteProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
             let url = "https://dry-eyrie-61502.herokuapp.com/users/?page=0&size=20&userId=\(2)"
-        
-        FirstApi.instance().makeAPICall(url: url, params:"", method: .GET, success: { (data, response, error, responsedata) in
-            
-            //             API call is Successfull
-            
-            guard let data = data else {
-                print("request failed \(error)")
-                return
-            }
-            
-            do {
-                
-                let apidata = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
-                
-                
-
-                let content = apidata["content"] as? NSArray
-                //                let images = content!["image"] as! NSArray
-                
-                for row in content! {
-                    
-                    
-                    let r = row as! NSDictionary
-                    
-                    let md = MyData()
-                    
-//                    md.ID = r["content"] as? String
-                    
-//                    md.ID = r["id"] as? String
-                    md.Photo = r["photo"] as? String
-                    md.Nickname = r["name"] as? String
-                    md.userId = r["id"] as? Int64
-                    
-                    
-                    print("\(self.list.count)")
-                    self.list.append(md)
-                    
-                    
-                    DispatchQueue.main.async {
-                        
-                        self.tableView.reloadData()
-                        
-                    }
-                }
-            }
-            catch  {
-            }
-            print("API call is Successfull")
-            
-        }, failure: { (data, response, error) in 
-            // API call Failure
-            print("fail")
-        } )
-        
+        presenter.attachView(view: self)
+        tableView.reloadData()
+//        FirstApi.instance().makeAPICall(url: url, params:"", method: .GET, success: { (data, response, error, responsedata) in
+//            
+//            //             API call is Successfull
+//            
+//            guard let data = data else {
+//                print("request failed \(error)")
+//                return
+//            }
+//            
+//            do {
+//                
+//                let apidata = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
+//                
+//                
+//
+//                let content = apidata["content"] as? NSArray
+//                //                let images = content!["image"] as! NSArray
+//                
+//                for row in content! {
+//                    
+//                    
+//                    let r = row as! NSDictionary
+//                    
+//                    let md = MyData()
+//                    
+////                    md.ID = r["content"] as? String
+//                    
+////                    md.ID = r["id"] as? String
+//                    md.Photo = r["photo"] as? String
+//                    md.Nickname = r["name"] as? String
+//                    md.userId = r["id"] as? Int64
+//                    
+//                    
+//                    print("\(self.list.count)")
+//                    self.list.append(md)
+//                    
+//                    
+//                    DispatchQueue.main.async {
+//                        
+//                        self.tableView.reloadData()
+//                        
+//                    }
+//                }
+//            }
+//            catch  {
+//            }
+//            print("API call is Successfull")
+//            
+//        }, failure: { (data, response, error) in 
+//            // API call Failure
+//            print("fail")
+//        } )
+//        
         
         
     }
@@ -147,11 +190,11 @@ class ListTableViewController: UITableViewController, InviteProtocol{
         
 //        let cell2 = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
         let row = self.list[indexPath.row]
-        let imageurl = row.Photo
+        let imageurl = row.photo
        
-        cell.userName.text = row.Nickname
-        cell.friendId = row.userId!
-        cell.shortMessage.text = row.ShortMessage
+        cell.userName.text = row.name
+        cell.friendId = row.id!
+        cell.shortMessage.text = "한줄메시지 공사중"
         cell.delegate = self
 
         
@@ -194,6 +237,16 @@ class ListTableViewController: UITableViewController, InviteProtocol{
                 
                 
         }
+    }
+    
+    
+    func getList() {
+        
+        
+        let user = ListRequest(userId : 2 , page : 0 , size : 10)
+        
+        self.presenter.onList(request: user)
+        
     }
 
 }

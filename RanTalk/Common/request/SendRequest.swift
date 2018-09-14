@@ -1,26 +1,25 @@
 //
-//  ChatRequest.swift
+//  SendRequest.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/11/18.
+//  Created by KIM HO MIN on 9/14/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-struct ChatRequest : Mappable {
+struct SendRequest : Mappable {
     
+    
+    var message : String?
     var roomId : Int64?
     var userId : Int64?
-    var page : Int64?
-    var size : Int64?
     
-    init(roomId : Int64 , userId : Int64 , page : Int64 , size : Int64 ) {
+    init(message : String , roomId : Int64 , userId : Int64 ) {
+        self.message = message
         self.roomId = roomId
         self.userId = userId
-        self.page = page
-        self.size = size
     }
     
     init?(map: Map) {
@@ -28,10 +27,9 @@ struct ChatRequest : Mappable {
     }
     
     mutating func mapping(map: Map) {
+        self.message <- map["message"]
         self.roomId <- map["roomId"]
         self.userId <- map["userId"]
-        self.page <- map["page"]
-        self.size <- map["size"]
     }
     
 }

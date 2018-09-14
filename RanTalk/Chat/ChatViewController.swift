@@ -10,13 +10,49 @@ import UIKit
 import StompClientLib
 import CoreGraphics
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, StompClientLibDelegate{
+
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ChatView, StompClientLibDelegate{
     
-    var keyboardYN = false
-    var rectKeyboard: CGRect!
+    
+    func refresh() {
+        
+        tableView.reloadData()
+        
+    }
+    
+    func clearInputTextField() {
+        self.inputTextfield.text = ""
+    }
+    
+    
+    var keyboardShown:Bool = false // 키보드 상태 확인
+    var originY:CGFloat?
+    
+    
+    func apiCallback(response: BaseResponse) {
+        
+        let message = (response as! ChatResponse).content
+        
+        self.list = (message?.reversed())! + self.list
+        
+        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            
+            
+            if (self.page == 0) {
+                self.scrollToBottom()
+            }
+        }
+        
+        self.success = true
+        
+    }
+    
+    let presenter  = ChatPresenter()
+    
     var roomId = Int64()
     var userId = Int64(2)
-    var bottomConstraint: NSLayoutConstraint?
+    
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,13 +64,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return refreshControl
     }()
     
+    @IBOutlet var fullView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var inputmessageView: UIView!
     @IBOutlet var inputTextfield: UITextField!
     @IBAction func sendButton(_ sender: Any) {
+        let chat = SendRequest(message : inputTextfield.text! , roomId : 2 , userId : 2)
+        
+        presenter.sendChat(request: chat)
         
     }
-  
+    
     
     @IBOutlet var sendButtonOL: UIButton!
     
@@ -44,43 +84,61 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     lazy var success = false
     lazy var list: [MessageData] = {
         var datalist = [MessageData]()
-//               datalist.append(MessageData(messageType: "other", userId: 0, message: "this is other message 1 "))
+        
+        //               datalist.append(MessageData(messageType: "other", userId: 0, message: "this is other message 1 "))
         return datalist
         
     }()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMessage()
+        
+        registerForKeyboardNotifications()
+        
+        
+        
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
+        presenter.attachChatView(view: self)
         
         let urls = NSURL(string: "wss://dry-eyrie-61502.herokuapp.com/ran-chat/websocket")!
         socketClient.openSocketWithURLRequest(request: NSURLRequest(url: urls as URL) , delegate: self as StompClientLibDelegate)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        inputTextfield.delegate = self
+        
         self.tableView.addSubview(self.refreshControl)
-        tableView.reloadData()
+        
         self.tabBarController?.tabBar.isHidden = true
-        registerKeyboardEvent()
-        getMessage()
-        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.view.addGestureRecognizer(dismissTap)
-        // Do any additional setup after loading the view.
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        unregisterForKeyboardNotifications()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        unregisterKeyboardEvent()
+        self.presenter.detachView()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,12 +146,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-
-    
     
     
     //TableView DelegateFunc
-   
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -107,7 +163,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let messageData = list[indexPath.row]
         
         
-        if messageData.messageType == "MY"  {
+        if messageData.chatType == "MY"  {
+            
+            print("message ==== \(messageData.message)")
             
             return getMyMessageCell(messageData: messageData, indexPath: indexPath)
             
@@ -128,7 +186,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.layer.borderColor = UIColor.clear.cgColor
         
         cell.message.layer.cornerRadius = cell.message.frame.size.height / 5
-//        cell.message.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        //        cell.message.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         cell.message.layer.masksToBounds = true
         cell.message.text = messageData.message
         cell.message.sizeToFit()
@@ -148,7 +206,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.message.layer.cornerRadius = cell.message.frame.size.height / 5
         cell.message.layer.masksToBounds = true
-        cell.message.text = messageData.message
+        cell.message.text = messageData.message!
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
         
@@ -162,7 +220,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UITableViewAutomaticDimension
     }
     
-     //StompClientLib
+    //StompClientLib
     
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
         
@@ -179,6 +237,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let message = jsonBody
         let data = message?.data(using: String.Encoding.utf8)
         
+        
+        
         do{
             let messagedatas = try JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
             
@@ -187,11 +247,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             print("messageType = \(messageTypes!)")
             
-            let md = MessageData(messageType: messagedatas["chatType"] as? String, userId: messagedatas["userId"] as? Int64, message: messagedatas["message"] as? String)
+            //            let md = MessageData(chatType: messagedatas["chatType"] as? String, userId: messagedatas["userId"] as? Int64, message: messagedatas["message"] as? String)
+            var md = MessageData()
             
-            
-            md.messageType = md.userId == userId ? "MY" : "OTHER"
-                
+            md.chatType = messagedatas["chatType"] as? String
+            md.userId = messagedatas["userId"] as? Int64
+            md.message = messagedatas["message"] as? String
+            //
+            md.chatType = md.userId == userId ? "MY" : "OTHER"
+            //
             self.list.append(md)
             
             DispatchQueue.main.async {
@@ -200,17 +264,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("\(self.list.count)")
                 self.scrollToBottom()
             }
-                
-                
+            
+            
             
             
         }catch{
             print("error")
         }
-        
-        
-    
-
         
     }
     
@@ -220,7 +280,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func stompClientDidConnect(client: StompClientLib!) {
         
-         socketClient.subscribe(destination: "/chat/\(2)")
+        socketClient.subscribe(destination: "/chat/\(2)")
         
     }
     
@@ -247,8 +307,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let indexPath = IndexPath(row:self.list.count - 1,section: 0)
             
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-            
+            if self.list.count != 0 {
+                
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            }
         }
         
     }
@@ -257,57 +319,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getMessage () {
         
         
-        let url = "https://dry-eyrie-61502.herokuapp.com/chats?roomId=2&userId=2&page=\(page)&size=10"
         
-        FirstApi.instance().makeAPICall(url: url, params:"", method: .GET, success: { (data, response, error, responsedata) in
-            
-            //             API call is Successfull
-            
-            guard let data = data else {
-                print("request failed \(error)")
-                return
-            }
-            
-            do {
-                let apidata = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
-                
-                let content = apidata["content"] as! NSArray
-                
-                var messages = [MessageData]()
-                
-                for row in content {
-                    
-                    let r = row as! NSDictionary
-                    
-                    let md = MessageData(messageType: r["chatType"] as? String, userId: r["userId"] as? Int64, message: r["message"] as? String)
-                    
-                    
-                    print("\(self.list.count)")
-                    messages.append(md)
-                    
-                }
-                
-                self.list = messages + self.list
-                DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
-                    if (self.page == 0) {
-                        self.scrollToBottom()
-                    }
-                }
-                self.success = true
-            }
-            catch  {
-                
-            }
-            print("API call is Successfull")
-            
-        }, failure: { (data, response, error) in
-            
-            
-            // API call Failure
-            print("fail")
-        } )
+        
+        let user = ChatRequest(roomId : 2 , userId : 2 , page : Int64(self.page) , size : 10)
+        
+        self.presenter.onChat(request: user)
+        
         
     }
     
@@ -327,6 +344,61 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-   
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    func registerForKeyboardNotifications() {
+        // 옵저버 등록
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unregisterForKeyboardNotifications() {
+        // 옵저버 등록 해제
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if keyboardSize.height == 0.0 || keyboardShown == true {
+                return
+            }
+            
+            //            UIView.animate(withDuration: 0.33, animations: { () -> Void in
+            if originY == nil { originY = fullView.frame.size.height
+            }
+            fullView.frame.size.height = originY! - keyboardSize.height
+            //            }, completion: {
+            keyboardShown = true
+            scrollToBottom()
+            //            })
+        }
+    }
+    
+    @objc func keyboardWillHide(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if keyboardShown == false {
+                return
+            }
+            //
+            //                UIView.animate(withDuration: 0.33, animations: { () -> Void in
+            guard let originY = originY else { return }
+            fullView.frame.size.height = originY
+            //                }, completion: {
+            keyboardShown = false
+            //                })
+        }
+    }
+    
+    
+    
 }
+

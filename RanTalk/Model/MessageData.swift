@@ -7,25 +7,28 @@
 //
 
 import Foundation
+import ObjectMapper
 
-
-class MessageData {
+struct MessageData:Mappable {
     
     
-    
-    var messageType : String?  // user id
+    var chatType : String?  // user id
     var userId : Int64? // user pass
     var message : String?
     
-    init (messageType : String?, userId: Int64?, message : String?) {
-        
-        
-        self.messageType = messageType
-        self.userId = userId
-        self.message = message
-        
+    init() {
         
     }
     
+    init? (map: Map) {
+
+    }
     
+    
+    mutating func mapping(map: Map) {
+        self.chatType <- map["chatType"]
+        self.userId <- map["userId"]
+        self.message <- map["message"]
+    }
 }
+

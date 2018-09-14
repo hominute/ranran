@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		AFC84A18CF646C4FA3982F0A /* Pods_RanTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60B984CFD3E4D7BD949E9F1 /* Pods_RanTalk.framework */; };
+		EA1995F4214C02F400B28EB7 /* SendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995F3214C02F400B28EB7 /* SendRequest.swift */; };
+		EA1995F6214C02FB00B28EB7 /* SendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995F5214C02FB00B28EB7 /* SendResponse.swift */; };
+		EA1995FA214C05C700B28EB7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995F9214C05C700B28EB7 /* ChatView.swift */; };
+		EA1995FC214C1BCB00B28EB7 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */; };
+		EA1995FE214C293500B28EB7 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995FD214C293500B28EB7 /* ChatPresenter.swift */; };
 		EACF7ECD21398BA200939BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECC21398BA200939BB7 /* AppDelegate.swift */; };
 		EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECE21398BA200939BB7 /* SigninViewController.swift */; };
 		EACF7ED221398BA200939BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF7ED021398BA200939BB7 /* Main.storyboard */; };
@@ -43,12 +48,21 @@
 		EAD73B7321463B8B0011190E /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B7221463B8B0011190E /* Navigator.swift */; };
 		EAD73B7A2146DE780011190E /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B792146DE780011190E /* ChatRequest.swift */; };
 		EAD73B7C2146DE830011190E /* ChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B7B2146DE830011190E /* ChatResponse.swift */; };
+		EAD73B7E214700000011190E /* testproto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B7D214700000011190E /* testproto.swift */; };
+		EAD73B84214B831A0011190E /* ListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B83214B831A0011190E /* ListRequest.swift */; };
+		EAD73B86214B83210011190E /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B85214B83210011190E /* ListResponse.swift */; };
+		EAD73B88214B85440011190E /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD73B87214B85440011190E /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1456A13C75448EBE01408515 /* Pods-RanTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RanTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk.debug.xcconfig"; sourceTree = "<group>"; };
 		4D5A10B7171D802C2C1EF61B /* Pods-RanTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RanTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-RanTalk/Pods-RanTalk.release.xcconfig"; sourceTree = "<group>"; };
 		C60B984CFD3E4D7BD949E9F1 /* Pods_RanTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RanTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA1995F3214C02F400B28EB7 /* SendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendRequest.swift; sourceTree = "<group>"; };
+		EA1995F5214C02FB00B28EB7 /* SendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResponse.swift; sourceTree = "<group>"; };
+		EA1995F9214C05C700B28EB7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		EA1995FD214C293500B28EB7 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
 		EACF7EC921398BA200939BB7 /* RanTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RanTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF7ECC21398BA200939BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF7ECE21398BA200939BB7 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +100,10 @@
 		EAD73B7221463B8B0011190E /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		EAD73B792146DE780011190E /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		EAD73B7B2146DE830011190E /* ChatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResponse.swift; sourceTree = "<group>"; };
+		EAD73B7D214700000011190E /* testproto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testproto.swift; sourceTree = "<group>"; };
+		EAD73B83214B831A0011190E /* ListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRequest.swift; sourceTree = "<group>"; };
+		EAD73B85214B83210011190E /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
+		EAD73B87214B85440011190E /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +224,7 @@
 				EACF7EFC213A82D400939BB7 /* MyData.swift */,
 				EACF7F0B213A91DF00939BB7 /* MessageData.swift */,
 				EAD73B5F2145844D0011190E /* User.swift */,
+				EAD73B87214B85440011190E /* List.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,10 +232,12 @@
 		EAD73B3821419DB20011190E /* API */ = {
 			isa = PBXGroup;
 			children = (
-				EAD73B782146D50A0011190E /* ByungShinAPI */,
 				EAD73B6C214585B90011190E /* UserAPI.swift */,
 				EAD73B6E214586860011190E /* UserView.swift */,
+				EA1995F9214C05C700B28EB7 /* ChatView.swift */,
 				EAD73B70214586A30011190E /* UserPresenter.swift */,
+				EA1995FD214C293500B28EB7 /* ChatPresenter.swift */,
+				EAD73B7D214700000011190E /* testproto.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -238,6 +259,9 @@
 			children = (
 				EAD73B63214584C10011190E /* UserResponse.swift */,
 				EAD73B7B2146DE830011190E /* ChatResponse.swift */,
+				EAD73B85214B83210011190E /* ListResponse.swift */,
+				EA1995F5214C02FB00B28EB7 /* SendResponse.swift */,
+				EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -247,15 +271,10 @@
 			children = (
 				EAD73B66214584F40011190E /* UserRequest.swift */,
 				EAD73B792146DE780011190E /* ChatRequest.swift */,
+				EAD73B83214B831A0011190E /* ListRequest.swift */,
+				EA1995F3214C02F400B28EB7 /* SendRequest.swift */,
 			);
 			path = request;
-			sourceTree = "<group>";
-		};
-		EAD73B782146D50A0011190E /* ByungShinAPI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ByungShinAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,35 +404,44 @@
 				EACF7EF9213A812B00939BB7 /* AdTableViewCell.swift in Sources */,
 				EAD73B6D214585B90011190E /* UserAPI.swift in Sources */,
 				EACF7EF5213A809700939BB7 /* ListTableViewCell.swift in Sources */,
+				EA1995FE214C293500B28EB7 /* ChatPresenter.swift in Sources */,
 				EACF7F04213A90D900939BB7 /* ChatViewController.swift in Sources */,
 				EAD73B69214585130011190E /* API.swift in Sources */,
 				EACF7F06213A90FB00939BB7 /* MessageTableViewCell.swift in Sources */,
 				EAD73B602145844D0011190E /* User.swift in Sources */,
 				EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */,
+				EAD73B84214B831A0011190E /* ListRequest.swift in Sources */,
 				EACF7F08213A910500939BB7 /* MyTableViewCell.swift in Sources */,
 				EACF7EED213A7A1B00939BB7 /* Extensions.swift in Sources */,
 				EAD73B64214584C10011190E /* UserResponse.swift in Sources */,
 				EACF7EFB213A814300939BB7 /* UserTableViewCell.swift in Sources */,
+				EAD73B7E214700000011190E /* testproto.swift in Sources */,
 				EACF7EFD213A82D400939BB7 /* MyData.swift in Sources */,
+				EAD73B88214B85440011190E /* List.swift in Sources */,
 				EACF7EE4213A742E00939BB7 /* FirstApi.swift in Sources */,
 				EACF7EF1213A802500939BB7 /* ListTableViewController.swift in Sources */,
 				EACF7F0F213BC56F00939BB7 /* InviteProtocol.swift in Sources */,
 				EACF7EE7213A746300939BB7 /* SecondApi.swift in Sources */,
+				EA1995F6214C02FB00B28EB7 /* SendResponse.swift in Sources */,
 				EAD73B7321463B8B0011190E /* Navigator.swift in Sources */,
 				EACF7F0A213A911000939BB7 /* OtherTableViewCell.swift in Sources */,
 				EAD73B6F214586860011190E /* UserView.swift in Sources */,
 				EACF7EEB213A762000939BB7 /* MyDTO.swift in Sources */,
 				EAD73B71214586A30011190E /* UserPresenter.swift in Sources */,
+				EA1995F4214C02F400B28EB7 /* SendRequest.swift in Sources */,
 				EAD73B6B214585680011190E /* ShareReferences.swift in Sources */,
 				EAD73B67214584F40011190E /* UserRequest.swift in Sources */,
 				EACF7ED521398BA200939BB7 /* RanTalk.xcdatamodeld in Sources */,
 				EACF7F0C213A91DF00939BB7 /* MessageData.swift in Sources */,
+				EA1995FA214C05C700B28EB7 /* ChatView.swift in Sources */,
 				EACF7EE2213A703300939BB7 /* SignupViewController.swift in Sources */,
 				EACF7F02213A8E3900939BB7 /* ChatTableViewCell.swift in Sources */,
 				EAD73B7C2146DE830011190E /* ChatResponse.swift in Sources */,
 				EACF7ECD21398BA200939BB7 /* AppDelegate.swift in Sources */,
 				EACF7F00213A8D9700939BB7 /* ChatTableViewController.swift in Sources */,
+				EA1995FC214C1BCB00B28EB7 /* BaseResponse.swift in Sources */,
 				EAD73B7A2146DE780011190E /* ChatRequest.swift in Sources */,
+				EAD73B86214B83210011190E /* ListResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
