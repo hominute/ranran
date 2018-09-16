@@ -11,9 +11,10 @@ import ObjectMapper
 
 struct User : Mappable {
     
-    var id : String?
+    var id : Int64?
     var email : String?
     var name : String?
+    var statusmessage : String?
 
     
     init() {
@@ -29,6 +30,7 @@ struct User : Mappable {
         self.id <- map["id"]
         self.email <- map["email"]
         self.name <- map["name"]
+        self.statusmessage <- map["statusMessage"]
 
     }
     

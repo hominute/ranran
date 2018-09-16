@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-struct UserResponse: Mappable {
+class UserResponse: BaseResponse, Mappable {
     
     var message : String? = nil
     var error : String?
@@ -18,11 +18,11 @@ struct UserResponse: Mappable {
     var email : String?
     var name : String?
     
-    init?(map: Map) {
+   required init?(map: Map) {
         
     }
     
-    mutating func mapping(map: Map) {
+    func mapping(map: Map) {
         self.user <- map["user"]
         self.message <- map["message"]
         self.error <- map["error"]

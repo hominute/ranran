@@ -13,6 +13,11 @@
 		EA1995FA214C05C700B28EB7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995F9214C05C700B28EB7 /* ChatView.swift */; };
 		EA1995FC214C1BCB00B28EB7 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */; };
 		EA1995FE214C293500B28EB7 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1995FD214C293500B28EB7 /* ChatPresenter.swift */; };
+		EA199603214E7C1B00B28EB7 /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA199602214E7C1B00B28EB7 /* MyData.swift */; };
+		EA199605214E809400B28EB7 /* BaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA199604214E809400B28EB7 /* BaseData.swift */; };
+		EA199607214E918600B28EB7 /* RoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA199606214E918600B28EB7 /* RoomResponse.swift */; };
+		EA19960B214E9BDD00B28EB7 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19960A214E9BDD00B28EB7 /* RoomRequest.swift */; };
+		EA19960D214E9CFD00B28EB7 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19960C214E9CFD00B28EB7 /* Room.swift */; };
 		EACF7ECD21398BA200939BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECC21398BA200939BB7 /* AppDelegate.swift */; };
 		EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7ECE21398BA200939BB7 /* SigninViewController.swift */; };
 		EACF7ED221398BA200939BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF7ED021398BA200939BB7 /* Main.storyboard */; };
@@ -28,7 +33,6 @@
 		EACF7EF5213A809700939BB7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EF4213A809700939BB7 /* ListTableViewCell.swift */; };
 		EACF7EF9213A812B00939BB7 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EF8213A812B00939BB7 /* AdTableViewCell.swift */; };
 		EACF7EFB213A814300939BB7 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFA213A814300939BB7 /* UserTableViewCell.swift */; };
-		EACF7EFD213A82D400939BB7 /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFC213A82D400939BB7 /* MyData.swift */; };
 		EACF7F00213A8D9700939BB7 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */; };
 		EACF7F02213A8E3900939BB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */; };
 		EACF7F04213A90D900939BB7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF7F03213A90D900939BB7 /* ChatViewController.swift */; };
@@ -63,6 +67,11 @@
 		EA1995F9214C05C700B28EB7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		EA1995FD214C293500B28EB7 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		EA199602214E7C1B00B28EB7 /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
+		EA199604214E809400B28EB7 /* BaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseData.swift; sourceTree = "<group>"; };
+		EA199606214E918600B28EB7 /* RoomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResponse.swift; sourceTree = "<group>"; };
+		EA19960A214E9BDD00B28EB7 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
+		EA19960C214E9CFD00B28EB7 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		EACF7EC921398BA200939BB7 /* RanTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RanTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF7ECC21398BA200939BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF7ECE21398BA200939BB7 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		EACF7EF4213A809700939BB7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		EACF7EF8213A812B00939BB7 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		EACF7EFA213A814300939BB7 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		EACF7EFC213A82D400939BB7 /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
 		EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EACF7F03213A90D900939BB7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -221,10 +229,12 @@
 		EACF7F0D213A91E600939BB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EACF7EFC213A82D400939BB7 /* MyData.swift */,
 				EACF7F0B213A91DF00939BB7 /* MessageData.swift */,
 				EAD73B5F2145844D0011190E /* User.swift */,
 				EAD73B87214B85440011190E /* List.swift */,
+				EA19960C214E9CFD00B28EB7 /* Room.swift */,
+				EA199602214E7C1B00B28EB7 /* MyData.swift */,
+				EA199604214E809400B28EB7 /* BaseData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +271,7 @@
 				EAD73B7B2146DE830011190E /* ChatResponse.swift */,
 				EAD73B85214B83210011190E /* ListResponse.swift */,
 				EA1995F5214C02FB00B28EB7 /* SendResponse.swift */,
+				EA199606214E918600B28EB7 /* RoomResponse.swift */,
 				EA1995FB214C1BCB00B28EB7 /* BaseResponse.swift */,
 			);
 			path = response;
@@ -273,6 +284,7 @@
 				EAD73B792146DE780011190E /* ChatRequest.swift */,
 				EAD73B83214B831A0011190E /* ListRequest.swift */,
 				EA1995F3214C02F400B28EB7 /* SendRequest.swift */,
+				EA19960A214E9BDD00B28EB7 /* RoomRequest.swift */,
 			);
 			path = request;
 			sourceTree = "<group>";
@@ -411,14 +423,18 @@
 				EAD73B602145844D0011190E /* User.swift in Sources */,
 				EACF7ECF21398BA200939BB7 /* SigninViewController.swift in Sources */,
 				EAD73B84214B831A0011190E /* ListRequest.swift in Sources */,
+				EA199607214E918600B28EB7 /* RoomResponse.swift in Sources */,
+				EA19960D214E9CFD00B28EB7 /* Room.swift in Sources */,
 				EACF7F08213A910500939BB7 /* MyTableViewCell.swift in Sources */,
 				EACF7EED213A7A1B00939BB7 /* Extensions.swift in Sources */,
 				EAD73B64214584C10011190E /* UserResponse.swift in Sources */,
+				EA199603214E7C1B00B28EB7 /* MyData.swift in Sources */,
+				EA199605214E809400B28EB7 /* BaseData.swift in Sources */,
 				EACF7EFB213A814300939BB7 /* UserTableViewCell.swift in Sources */,
 				EAD73B7E214700000011190E /* testproto.swift in Sources */,
-				EACF7EFD213A82D400939BB7 /* MyData.swift in Sources */,
 				EAD73B88214B85440011190E /* List.swift in Sources */,
 				EACF7EE4213A742E00939BB7 /* FirstApi.swift in Sources */,
+				EA19960B214E9BDD00B28EB7 /* RoomRequest.swift in Sources */,
 				EACF7EF1213A802500939BB7 /* ListTableViewController.swift in Sources */,
 				EACF7F0F213BC56F00939BB7 /* InviteProtocol.swift in Sources */,
 				EACF7EE7213A746300939BB7 /* SecondApi.swift in Sources */,
@@ -595,6 +611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoto.RanTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -614,6 +631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoto.RanTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

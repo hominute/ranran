@@ -11,6 +11,9 @@ import UIKit
 class MyTableViewCell: MessageTableViewCell {
 
     @IBOutlet var message: UILabel!
+    
+    @IBOutlet var createdDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

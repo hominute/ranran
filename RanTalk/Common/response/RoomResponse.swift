@@ -1,20 +1,20 @@
 //
-//  ListResponse.swift
+//  RoomRequest.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/14/18.
+//  Created by KIM HO MIN on 9/16/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class ListResponse: BaseResponse, Mappable {
+class RoomResponse: BaseResponse, Mappable {
     
     var message : String? = nil
     var error : String?
     var user : User?
-    var data : MyData<List>?
+    var data : MyData<Room>?
     var userId : Int64?
     var hoho : NSArray?
     

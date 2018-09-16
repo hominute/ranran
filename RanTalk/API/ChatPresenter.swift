@@ -10,9 +10,12 @@ import ObjectMapper
 
 class ChatPresenter {
     
-    private let userApi = UserAPI()
+    private var userApi = UserAPI()
 
     private var chatView : ChatView?
+    
+
+    
     
     
     func attachChatView(view : ChatView) {
@@ -25,14 +28,42 @@ class ChatPresenter {
         self.chatView = nil
     }
     
+    
+    func getRoom(request : RoomRequest){
+        userApi.getRoom(request: request) { (response, error) in
+            
+            if error == nil {
+         
+                
+              print(response)
+     
+                if response?.error == nil {
+                    self.chatView?.apiCallback(response: response!)
+                    self.chatView?.refresh()
+                    
+                }
+                
+                print("signinSuccesfulgogogo")
+            }
+            else{
+                
+                print(response?.message)
+                
+            }
+            
+        }
+    }
+    
+    
+    
     func onChat(request : ChatRequest){
         
         userApi.onChat(request: request) { response in
+        
             
+            print("content = \(response.data?.content?.toJSON())")
             
-            print("content = \(response)")
-            
-            print("message =-------- asaasdsd\(response.content?.count)")
+            print("message =-------- asaasdsd\(response.data?.content?.count)")
             
             if response.error == nil {
                 self.chatView?.apiCallback(response: response)
@@ -46,24 +77,25 @@ class ChatPresenter {
     
     
     func sendChat(request : SendRequest){
-        userApi.sendChat(request: request) {message in
+        userApi.sendChat(request: request) { (message, error) in
             
-            if message.error != "" {
-                print(message.message as Any)
+            if error != nil {
+                print(message?.message as Any)
                 
                 
-                if message.message != nil {
+                if message?.message != nil {
                     self.chatView?.refresh()
-                    self.chatView?.clearInputTextField()
+                    
                 }
                 
                 print("signinSuccesfulgogogo")
             }
             else{
                 
-                print(message.message)
+                print(message?.message)
                 
             }
+            self.chatView?.clearInputTextField()
         }
     }
     

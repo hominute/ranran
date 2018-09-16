@@ -72,12 +72,41 @@ class UserAPI {
             switch response.result {
             case .success:
                 DispatchQueue.main.async {
+                    print("resonse = \(response)")
                     callBack(response.result.value!)
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
+    func getRoom(request : RoomRequest , callBack : @escaping  (RoomResponse?, Error?) -> Void) {
+        
+        let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
+        
+        Alamofire.request(API.ROOM, method: .get , parameters : parameters  , encoding : URLEncoding.default, headers: [:]).responseObject {
+            (response: DataResponse<RoomResponse>)  in
+            
+            let data = response.data
+            let responsedata = String(data: data!, encoding: .utf8)!
+            print("full responsedata = \(responsedata)")
+            
+            
+            switch response.result {
+            case .success:
+                DispatchQueue.main.async {
+                    callBack(response.result.value!, nil)
                     
                     print("resonse = \(response)")
                 }
                 break
             case .failure(let error):
+                callBack(nil, error)
                 print(error)
             }
         }
@@ -111,7 +140,7 @@ class UserAPI {
     }
     
     
-    func sendChat(request : SendRequest , callBack : @escaping  (SendResponse) -> Void) {
+    func sendChat(request : SendRequest , callBack : @escaping  (SendResponse?, Error?) -> Void) {
         
         let parameters  : Parameters =  ["message" : request.message! , "roomId" : request.roomId! , "userId" : request.userId!]
         
@@ -126,12 +155,13 @@ class UserAPI {
             switch response.result {
             case .success:
                 DispatchQueue.main.async {
-                    callBack(response.result.value!)
+                    callBack(response.result.value!, nil)
                     
                     print("resonse = \(response)")
                 }
                 break
             case .failure(let error):
+                callBack(nil, error)
                 print(error)
             }
         }

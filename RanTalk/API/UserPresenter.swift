@@ -12,7 +12,6 @@ import ObjectMapper
 class UserPresenter {
     
     
-    
     private let userApi : UserAPI
     weak private var userView : UserView?
     
@@ -45,6 +44,8 @@ class UserPresenter {
                 if user.message != nil {
                 self.userView?.signInSuccessful(message: user.message!)
                 }
+                
+                self.userView?.apiCallback(response: user)
                 self.userView?.navigation()
 
                 print("signinSuccesfulgogogo")
@@ -75,8 +76,8 @@ class UserPresenter {
             
             if content.error == nil {
                 
-                ShareReferences.shared.setList(list: content.content!)
-                self.userView?.apiCallback()
+//                ShareReferences.shared.setList(list: (content.data?.content)!)
+                self.userView?.apiCallback(response: content)
             
             }
             else{

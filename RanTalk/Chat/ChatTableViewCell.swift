@@ -10,6 +10,8 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
     @IBOutlet var chatbutton: UIButton!
+    @IBOutlet var userImage: UIImageView!
+    @IBOutlet var lastMessage: UILabel!
     
     @IBAction func testbutton(_ sender: Any) {
     }
@@ -23,5 +25,13 @@ class ChatTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func imageLoad(url: String) {
+        let url = URL(string: url)
+        
+        userImage?.kf.setImage(with: url)
+        
+    }
+    
 
 }

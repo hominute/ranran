@@ -2,26 +2,31 @@
 //  MyData.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/1/18.
+//  Created by KIM HO MIN on 9/16/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
 import Foundation
+import ObjectMapper
 
-class MyData {
+class MyData <T: Mappable> : Mappable {
+    
+//    let datasd = T.selfr
+    var content : [T]?
+
+    
+   init() {
+        
+    }
+    
+   required init? (map: Map) {
+        
+    
+    }
     
     
-    
-    var ID : String?// user id
-    var Pass : String? // user pass
-    var Image : String?
-    var userId : Int64?
-//    var Imagehost : String?
-//    var Imagepath : String?
-//    var Imagename : String?
-    var Comment : String?
-    var ShortMessage : String?
-    var Nickname : String?
-    var Photo : String?
-    
+   func mapping(map: Map) {
+        self.content <- map["content"]
+        
+    }
 }

@@ -11,9 +11,11 @@ import Alamofire
 
 
 class ListTableViewController: UITableViewController, InviteProtocol, UserView{
-    func apiCallback(response: BaseResponse) {
+    func apiCallback() {
         
     }
+    
+
     
     func startLoading() {
         
@@ -39,11 +41,13 @@ class ListTableViewController: UITableViewController, InviteProtocol, UserView{
         
     }
     
-    func apiCallback() {
+    func apiCallback(response: BaseResponse) {
         
-        let List = ShareReferences.shared.getList()
+//        let message = (response as! ChatResponse).data?.content
         
-        self.list = List
+        let List = (response as! ListResponse).data?.content
+        
+        self.list = List!
         self.tableView.reloadData()
         
         
@@ -194,9 +198,9 @@ class ListTableViewController: UITableViewController, InviteProtocol, UserView{
        
         cell.userName.text = row.name
         cell.friendId = row.id!
-        cell.shortMessage.text = "한줄메시지 공사중"
+        cell.shortMessage.text = row.statusMessge
         cell.delegate = self
-
+        
         
         if imageurl != "" as? String {
             cell.userImage?.isHidden = false

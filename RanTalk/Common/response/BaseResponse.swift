@@ -8,7 +8,7 @@
 
 
 
-class BaseResponse {
+class BaseResponse: BaseData {
 
 }
 

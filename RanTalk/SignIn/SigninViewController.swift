@@ -62,6 +62,8 @@ class SigninViewController: UIViewController {
             let user = UserRequest(name : "null" , email : signinId.text! , password : signinPassword.text!)
 
             presenter.onSignIn(request: user)
+            signInSuccessful(message: "gg")
+            
 //            startLoading()
             
 //                .onSignIn(request: user)
@@ -208,6 +210,18 @@ class SigninViewController: UIViewController {
 extension SigninViewController : UserView {
     func apiCallback(response: BaseResponse) {
         
+        
+        
+        let userdata = ShareReferences.shared.getUser()
+        let IDdata = UserDefaults.standard
+        IDdata.set(userdata.id, forKey: "userId")
+        
+        let uds = UserDefaults.standard
+        
+        let loginUserId = uds.string(forKey: "userId")
+        
+        print("logined userId = \(userdata.id)")
+        
     }
     
     
@@ -228,6 +242,12 @@ extension SigninViewController : UserView {
     func signInSuccessful(message: String) {
         print(message)
         
+       
+        
+//        let uds = UserDefaults.standard
+//
+//        let name = uds.string(forKey: "name")
+//        let emails = uds.string(forKey: "logined")
 //        dialog(message: message, error: false)
     }
     func navigation() {
@@ -239,6 +259,8 @@ extension SigninViewController : UserView {
     
     func signUpSuccessful(message: String) {
         print(message)
+        
+        
 //        dialog(message: message, error: false)
     }
     

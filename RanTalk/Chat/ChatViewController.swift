@@ -30,8 +30,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func apiCallback(response: BaseResponse) {
-        
-        let message = (response as! ChatResponse).content
+    
+        let message = (response as! ChatResponse).data?.content
         
         self.list = (message?.reversed())! + self.list
         
@@ -71,8 +71,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendButton(_ sender: Any) {
         let chat = SendRequest(message : inputTextfield.text! , roomId : 2 , userId : 2)
         
+        if inputTextfield.text! != "" {
         presenter.sendChat(request: chat)
-        
+        }
     }
     
     
@@ -85,7 +86,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     lazy var list: [MessageData] = {
         var datalist = [MessageData]()
         
-        //               datalist.append(MessageData(messageType: "other", userId: 0, message: "this is other message 1 "))
         return datalist
         
     }()
@@ -189,6 +189,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        cell.message.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         cell.message.layer.masksToBounds = true
         cell.message.text = messageData.message
+        cell.createdDate.text = messageData.createdDate
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
         
@@ -207,6 +208,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.message.layer.cornerRadius = cell.message.frame.size.height / 5
         cell.message.layer.masksToBounds = true
         cell.message.text = messageData.message!
+        cell.createdDate.text = messageData.createdDate
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
         
@@ -236,7 +238,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = jsonBody
         let data = message?.data(using: String.Encoding.utf8)
-        
+        print("socket message = \(data)")
         
         
         do{

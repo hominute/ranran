@@ -380,6 +380,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="chatbutton" destination="MSm-Si-QAN" id="2Bc-3O-JZ1"/>
+                                    <outlet property="lastMessage" destination="aYZ-sp-M8b" id="Pbx-vU-xxs"/>
+                                    <outlet property="userImage" destination="wED-Ry-SE8" id="LDO-YB-3Fy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -435,7 +437,6 @@
                                             <constraints>
                                                 <constraint firstItem="Wex-sU-Ptt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p7L-hb-NCD" secondAttribute="leading" constant="100" id="1nk-e5-ddD"/>
                                                 <constraint firstItem="em0-ZR-wXK" firstAttribute="bottom" secondItem="Wex-sU-Ptt" secondAttribute="bottom" id="3DR-TO-QKG"/>
-                                                <constraint firstItem="em0-ZR-wXK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p7L-hb-NCD" secondAttribute="leading" constant="268" id="N1W-1j-UUo"/>
                                                 <constraint firstItem="Wex-sU-Ptt" firstAttribute="leading" secondItem="em0-ZR-wXK" secondAttribute="trailing" constant="8" id="PtC-8K-saz"/>
                                                 <constraint firstItem="Wex-sU-Ptt" firstAttribute="centerY" secondItem="p7L-hb-NCD" secondAttribute="centerY" id="Stb-tb-ewH"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wex-sU-Ptt" secondAttribute="trailing" constant="15" id="heC-uA-GPR"/>
@@ -443,6 +444,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="createdDate" destination="em0-ZR-wXK" id="W1B-MH-rgv"/>
                                             <outlet property="message" destination="Wex-sU-Ptt" id="5xU-9A-BWs"/>
                                         </connections>
                                     </tableViewCell>
@@ -487,7 +489,6 @@
                                                 <constraint firstItem="whU-QW-Z9g" firstAttribute="centerY" secondItem="TYL-Rg-f80" secondAttribute="centerY" id="cYm-Aw-cDH"/>
                                                 <constraint firstItem="dgl-2A-7Q8" firstAttribute="top" secondItem="TYL-Rg-f80" secondAttribute="top" constant="10" id="l4N-gX-KJa"/>
                                                 <constraint firstItem="dgl-2A-7Q8" firstAttribute="leading" secondItem="TYL-Rg-f80" secondAttribute="leading" constant="10" id="mVq-Ai-Jst"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fvP-Fe-QiN" secondAttribute="trailing" constant="225" id="qaO-xz-HUh"/>
                                                 <constraint firstItem="whU-QW-Z9g" firstAttribute="top" secondItem="TYL-Rg-f80" secondAttribute="top" constant="23" id="s6t-WB-AG8"/>
                                                 <constraint firstItem="fvP-Fe-QiN" firstAttribute="bottom" secondItem="whU-QW-Z9g" secondAttribute="bottom" id="uKX-GK-1N6"/>
                                             </constraints>
@@ -577,6 +578,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rd0-vD-Kcm"/>
+        <segue reference="5ut-Fc-lPb"/>
     </inferredMetricsTieBreakers>
 </document>

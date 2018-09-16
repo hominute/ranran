@@ -9,26 +9,30 @@
 import Foundation
 import ObjectMapper
 
-struct MessageData:Mappable {
+class MessageData: Mappable {
     
     
-    var chatType : String?  // user id
-    var userId : Int64? // user pass
+    var chatType : String?
+    var userId : Int64?
     var message : String?
+    var createdDate : String?
+    
+    
     
     init() {
         
     }
     
-    init? (map: Map) {
+    required init? (map: Map) {
 
     }
     
     
-    mutating func mapping(map: Map) {
+    func mapping(map: Map) {
         self.chatType <- map["chatType"]
         self.userId <- map["userId"]
         self.message <- map["message"]
+        self.createdDate <- map["createdDate"]
     }
 }
 
