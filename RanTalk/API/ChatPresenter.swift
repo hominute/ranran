@@ -95,7 +95,7 @@ class ChatPresenter {
                 print(message?.message)
                 
             }
-            self.chatView?.clearInputTextField()
+//            self.chatView?.clearInputTextField()
         }
     }
     

@@ -48,15 +48,7 @@ class SigninViewController: UIViewController {
             
         }else {
 //
-            let path = "/users/login"
-            let parameter = [ "password" : "\(signinPassword.text!)",
-                "email" : "\(signinId.text!)"
-                ]
-            
-         
-            let url = "https://dry-eyrie-61502.herokuapp.com/users/login"
-            
-            let postString = "email=\(signinId.text!)&password=\(signinPassword.text!)"
+           
             
             
             let user = UserRequest(name : "null" , email : signinId.text! , password : signinPassword.text!)

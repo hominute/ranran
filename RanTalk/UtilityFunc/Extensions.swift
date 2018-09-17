@@ -17,7 +17,20 @@ extension UIColor {
     }
 }
 
-
+extension UIViewController {
+    func hideKeyboardWhenTappedAround(view : UITableView) {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    
+}
 //extension ChatViewController {
 //    
 //    //

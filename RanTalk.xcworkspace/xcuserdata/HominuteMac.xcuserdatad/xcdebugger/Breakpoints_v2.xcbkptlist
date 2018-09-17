@@ -9,13 +9,217 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RanTalk/Chat/ChatTableViewController.swift"
-            timestampString = "558803649.606356"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.059117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "keyboardWillShow(note:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.059487"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "keyboardWillShow(note:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.059729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "keyboardWillShow(note:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.059967"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
+            landmarkName = "ChatViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.row.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.794826"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.row.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.797363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; RanTalk.ChatViewController"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.800082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "2700">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;RanTalk.ChatViewController&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.802824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "2623">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.060472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
+            landmarkName = "ChatViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.section.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.8119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "417"
+                  endingLineNumber = "417"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.section.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.8142869"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "417"
+                  endingLineNumber = "417"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; RanTalk.ChatViewController"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.8162709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "417"
+                  endingLineNumber = "417"
+                  offsetFromSymbolStart = "2853">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RanTalk.ChatViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;RanTalk.ChatViewController&gt;"
+                  moduleName = "RanTalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/HominuteMac/Documents/IOS%20Development/RanTalk/RanTalk/Chat/ChatViewController.swift"
+                  timestampString = "558906337.817791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "417"
+                  endingLineNumber = "417"
+                  offsetFromSymbolStart = "2776">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RanTalk/Chat/ChatViewController.swift"
+            timestampString = "558909692.060711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
+            landmarkName = "keyboardWillShow(note:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

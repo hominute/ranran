@@ -13,7 +13,19 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var lastMessage: UILabel!
     
+    
+    var friendInfo : List?
+    
+    var delegte : InviteProtocol?
+    
     @IBAction func testbutton(_ sender: Any) {
+        
+        
+        
+        
+        
+        
+        
     }
     override func awakeFromNib() {
         super.awakeFromNib()

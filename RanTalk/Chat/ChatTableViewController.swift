@@ -44,12 +44,13 @@ class ChatTableViewController: UITableViewController, ChatView {
     
     override func viewWillAppear(_ animated: Bool) {
          self.tableView.reloadData()
+        presenter.attachChatView(view: self)
+        getList()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.attachChatView(view: self)
-       getList()
+       
         self.tableView.reloadData()
         
         tableView.estimatedRowHeight = 44

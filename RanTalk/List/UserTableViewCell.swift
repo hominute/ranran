@@ -34,11 +34,7 @@ class UserTableViewCell: ListTableViewCell{
 //        self.myId = uds.integer(forKey: "id")
         self.myId = 2
         
-        let url = "https://dry-eyrie-61502.herokuapp.com/chats/invite"
-        let bodyString = [
-            "friendId": friendId,
-            "userId": myId
-            ] as [String : Any]
+        
         
         
 //        SecondApi.instance().makeAPICalls(url: url, params: bodyString, method: .POST, success: {(data, response, error, responsedata) in
