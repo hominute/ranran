@@ -28,6 +28,16 @@ class ShareReferences: NSObject {
         return self.user
     }
     
+    var profile = Profile()
+    
+    func setProfile(profile : Profile){
+        self.profile = profile
+    }
+    
+    func getProfile() -> Profile {
+        return self.profile
+    }
+    
    
     var list = List()
     

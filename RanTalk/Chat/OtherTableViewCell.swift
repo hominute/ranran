@@ -7,13 +7,39 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OtherTableViewCell: MessageTableViewCell {
 
+    var userId = Int64()
+    
     @IBOutlet var message: UILabel!
     
     
     @IBOutlet var createdDate: UILabel!
+    
+    
+    @IBOutlet var friendImage: UIButton!
+    
+    @IBAction func friendInfo(_ sender: Any) {
+        
+        
+        self.delegte?.UserinfoCallback(userId: userId)
+        
+        
+    }
+    var delegte : UserinfoProtocol?
+    
+    func imageLoad(url: String) {
+        let url = URL(string: url)
+        
+        let modifier = AnyImageModifier { return $0.withRenderingMode(.alwaysOriginal) }
+//        let resource = ImageResource(downloadURL: url!, cacheKey: "my_avatar")
+        friendImage?.kf.setImage(with: url, for: .normal,  placeholder: nil, options: [.imageModifier(modifier)], progressBlock: nil, completionHandler: nil)
+        
+    }
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

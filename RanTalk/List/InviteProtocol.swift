@@ -7,6 +7,6 @@
 //
 
 public protocol InviteProtocol {
-    func inviteCallback(roomId:Int64)
+    func inviteClickCallback(friendId:Int64)
     
 }

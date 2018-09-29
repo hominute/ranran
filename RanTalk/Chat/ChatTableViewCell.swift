@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ChatTableViewCell: UITableViewCell {
     @IBOutlet var chatbutton: UIButton!
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var lastMessage: UILabel!
+    @IBOutlet var userName: UILabel!
     
     
+    @IBOutlet var testuserId: UILabel!
+    
+    @IBOutlet var testroomId: UILabel!
+    
+    var roomId = Int64()
     var friendInfo : List?
     
-    var delegte : InviteProtocol?
+    var delegte : ChatProtocol?
     
     @IBAction func testbutton(_ sender: Any) {
         
         
-        
-        
-        
-        
+        self.delegte?.ChatCallback(roomId: self.roomId)
         
     }
     override func awakeFromNib() {

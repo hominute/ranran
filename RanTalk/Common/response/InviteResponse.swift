@@ -1,23 +1,20 @@
 //
-//  RoomRequest.swift
+//  InviteResponse.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/16/18.
+//  Created by KIM HO MIN on 9/26/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class RoomResponse: BaseResponse, Mappable {
+class InviteResponse: BaseResponse, Mappable {
     
     var message : String? = nil
     var error : String?
-    var user : User?
-    var data : MyData<Room>?
-    var odata : Room?
-    var userId : Int64?
-  
+    var data : Room?
+
     
     
     required init?(map: Map) {
@@ -29,13 +26,9 @@ class RoomResponse: BaseResponse, Mappable {
     }
     
     func mapping(map: Map) {
-        self.user <- map["user"]
         self.message <- map["message"]
         self.error <- map["error"]
         self.data <- map["data"]
-        self.userId <- map["userId"]
-       
-        self.odata <- map["data"]
     }
     
     

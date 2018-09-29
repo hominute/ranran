@@ -13,6 +13,7 @@ struct Room : Mappable {
     
     var roomId : Int64?
     var friendInfo : List?
+    var lastchat : String?
     
     
     
@@ -28,6 +29,7 @@ struct Room : Mappable {
     mutating func mapping(map: Map) {
         self.roomId <- map["roomId"]
         self.friendInfo <- map["friendInfo"]
+        self.lastchat <- map["lastChat"]
   
         
     }

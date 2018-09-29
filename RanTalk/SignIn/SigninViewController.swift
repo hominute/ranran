@@ -13,10 +13,26 @@ import ObjectMapper
 
 class SigninViewController: UIViewController {
     
+    
+    @IBOutlet var SigninView: UIView!
+    
+    @IBAction func unwind(_ sender: UIStoryboardSegue) {
+        
+        
+    }
 
-
+    @IBAction func testLogout(_ sender: Any) {
+        
+        let uds = UserDefaults.standard
+        
+        uds.removeObject(forKey: "userId")
+        
+        
+    }
+    
+    
     let presenter  = UserPresenter(userApi : UserAPI() )
-
+   
     @IBAction func testButton(_ sender: Any) {
         self.performSegue(withIdentifier: "logined", sender: self)
         
@@ -25,9 +41,6 @@ class SigninViewController: UIViewController {
     
     @IBOutlet var signinPassword: UITextField!
     
-
-    
-
 
 //    var delegate: APIProtocol?
     
@@ -54,102 +67,9 @@ class SigninViewController: UIViewController {
             let user = UserRequest(name : "null" , email : signinId.text! , password : signinPassword.text!)
 
             presenter.onSignIn(request: user)
-            signInSuccessful(message: "gg")
             
-//            startLoading()
             
-//                .onSignIn(request: user)
-            
-        
-//            FirstApi.instance().makeAPICall(url: url, params:postString, method: .POST, success: { (data, response, error, responsedata) in
-//                
-//                // API call is Successfull
-//                
-//                let respondata = responsedata
-//                
-//                if ((respondata.contains("message"))) {
-//                    
-//                    MyDTO().DTO(type: "message", repondata: respondata, userdatas: { (userdatad) in
-//                        
-//                        let errormessage = userdatad
-//                        print("\(errormessage)")
-//                        self.displayMessage(userMessage: "\(errormessage)")
-//                        
-//                        
-//                    }
-//                    )
-//                    
-//                } else {
-//                    
-//                    
-//                    DispatchQueue.main.async {
-//                    
-//                        
-//                        
-//                        
-//                        MyDTO().DTO(type: "email",repondata: respondata, userdatas: { (userdatad) in
-//                            
-//                            let useremail = userdatad
-//                            print("\(useremail)")
-//                            
-//                            
-//                            let IDdata = UserDefaults.standard
-//                            IDdata.set(useremail, forKey: "logined")
-//                            
-//                            //                                self.presentingViewController?.dismiss(animated:true, completion: nil)
-//                            
-//                        }
-//                            
-//                        )
-//                        
-//                        MyDTO().DTO(type: "id",repondata: respondata, userdatas: { (userdatad) in
-//                            
-//                            let userId = userdatad
-//                            print("userId = \(userId)")
-//                            
-//                            
-//                            let IDdata = UserDefaults.standard
-//                            IDdata.set(userId, forKey: "userId")
-//                            
-//                            //                                self.presentingViewController?.dismiss(animated:true, completion: nil)
-//                            
-//                        }
-//                            
-//                        )
-//                        
-//                        
-//                        
-//                        
-//                        MyDTO().DTO(type: "name",repondata: respondata, userdatas: { (userdatad) in
-//                            
-//                            let username = userdatad
-//                            print("\(username)")
-//                            
-//                            
-//                            let IDdatas = UserDefaults.standard
-//                            IDdatas.set(username, forKey: "name")
-//                            //                                self.presentingViewController?.dismiss(animated:true, completion: nil)
-//                            
-//                        }
-//                            
-//                        )
-//                        
-//                        self.performSegue(withIdentifier: "logined", sender: self)
-//                        
-//                        
-//                        
-//                    }
-//                    
-//                }
-//                
-//                print("API call is Successfull")
-//                
-//            }, failure: { (data, response, error) in
-//                
-//                
-//                // API call Failure
-//                print("fail")
-//            } )
+
         }
         
     }
@@ -158,12 +78,40 @@ class SigninViewController: UIViewController {
     @IBAction func signup(_ sender: Any) {
     }
     
-
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //최후의보류
+        let uds = UserDefaults.standard
+        
+        let loginId = uds.integer(forKey: "userId")
+        
+        if loginId != 0 {
+            self.performSegue(withIdentifier: "logined", sender: self)
+            
+            
+        }
+        
+ 
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter.attachView(view: self)
+        self.hideKeyboardWhenTappedAround(view: SigninView)
 //        presenter.attachView(view: self as! UserView)
         
 //        delegatess = self as? ResponseProtocol
@@ -177,7 +125,7 @@ class SigninViewController: UIViewController {
     }
     
     
-    func displayMessage(userMessage:String) -> Void {
+    @objc func displayMessage(userMessage:String) -> Void {
         DispatchQueue.main.async
             {
                 let alertController = UIAlertController(title:"Alert", message: userMessage, preferredStyle:.alert)
@@ -194,25 +142,18 @@ class SigninViewController: UIViewController {
         }
     }
     
-    
-
-
 }
 
 extension SigninViewController : UserView {
     func apiCallback(response: BaseResponse) {
         
         
+       let userdata = ShareReferences.shared.getUser()
         
-        let userdata = ShareReferences.shared.getUser()
         let IDdata = UserDefaults.standard
         IDdata.set(userdata.id, forKey: "userId")
-        
-        let uds = UserDefaults.standard
-        
-        let loginUserId = uds.string(forKey: "userId")
-        
-        print("logined userId = \(userdata.id)")
+        IDdata.set(userdata.name, forKey: "name")
+    
         
     }
     

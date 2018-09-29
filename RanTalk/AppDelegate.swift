@@ -19,6 +19,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let udss = UserDefaults.standard
+//
+//        let loginId = uds.integer(forKey: "userId")
+        
+        
+        
+        
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+//        let viewController: MainViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! MainViewController;
+//
+        // Then push that view controller onto the navigation stack
+        
+//        if loginId != 0 {
+//        let rootViewController = self.window!.rootViewController?.presentedViewController as? SigninViewController
+//            DispatchQueue.main.async {
+//                   rootViewController?.performSegue(withIdentifier: "logined", sender: nil)
+//            }
+//
+//
+//        }
+//
+//        performSegue(withIdentifier: "logined", sender: nil)
+        
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+
+//        let signinlViewController = storyboard.instantiateViewController(withIdentifier: "SigninViewController")
+        
+       
+//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "maintabbar") as! MainTabbarViewController
+//
+        ///check login
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+//        let viewController: ListTableViewController = storyboard.instantiateViewController(withIdentifier: "ListTable") as! ListTableViewController
+        
+//        if loginId != 0 {
+//            let rootViewController = self.window!.rootViewController as! UINavigationController
+            
+            
+//            DispatchQueue.main.async {
+//                let rootViewController = self.window!.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SigninViewController") as! SigninViewController
+//                rootViewController.performSegue(withIdentifier: "logined", sender: nil)
+//            }
+            
+            
+            
+            
+//            DispatchQueue.main.async {
+//                 self.window!.rootViewController?.performSegue(withIdentifier: "logined", sender: nil)
+//            }
+           
+            
+//            initialViewController.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+//            self.window?.rootViewController = initialViewController
+            
+            
+//             navigationController.isNavigationBarHidden = false
+//        }
+//        else {
+//
+//            self.window?.rootViewController = signinlViewController
+//
+//
+//        }
+//        self.window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }

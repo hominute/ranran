@@ -16,6 +16,7 @@ class MessageData: Mappable {
     var userId : Int64?
     var message : String?
     var createdDate : String?
+    var photo : String?
     
     
     
@@ -33,6 +34,7 @@ class MessageData: Mappable {
         self.userId <- map["userId"]
         self.message <- map["message"]
         self.createdDate <- map["createdDate"]
+        self.photo <- map["photo"]
     }
 }
 

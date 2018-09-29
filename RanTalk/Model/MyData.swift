@@ -13,7 +13,8 @@ class MyData <T: Mappable> : Mappable {
     
 //    let datasd = T.selfr
     var content : [T]?
-
+    var totalPages : Int64?
+    var totalElements : Int64?
     
    init() {
         
@@ -27,6 +28,8 @@ class MyData <T: Mappable> : Mappable {
     
    func mapping(map: Map) {
         self.content <- map["content"]
+    self.totalPages <- map["totalPages"]
+    self.totalElements <- map["totalElements"]
         
     }
 }

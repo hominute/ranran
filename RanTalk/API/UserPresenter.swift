@@ -35,7 +35,7 @@ class UserPresenter {
     func onSignIn(request : UserRequest){
         userApi.onSignIn(request: request) {user in
 
-            if user.error != "" {
+            if user.error == nil {
                 print(user.message as Any)
                 
                 if user.user != nil {
@@ -61,29 +61,48 @@ class UserPresenter {
     func onSignUp(request : UserRequest){
         userApi.onSignUp(request: request) {user in
 
-            if user.error != "" {
-
-            }
-            else{
-
-            }
-        }
-    }
-    
-    
-    func onList(request : ListRequest){
-        userApi.onList(request: request) {content in
-            
-            if content.error == nil {
+            if user.error == nil {
+                print(user.message as Any)
                 
-//                ShareReferences.shared.setList(list: (content.data?.content)!)
-                self.userView?.apiCallback(response: content)
-            
+                if user.user != nil {
+                    ShareReferences.shared.setUser(user: user.user!)
+                }
+                if user.message != nil {
+                    self.userView?.signUpSuccessful(message: user.message!)
+                }
+                
+                self.userView?.apiCallback(response: user)
+                self.userView?.navigation()
+                
+                print("signupSuccesfulgogogo")
             }
             else{
-            
+                
+                print(user.message)
+                
             }
         }
     }
+    
+    func getUserInfo(request : ProfileRequest){
+        userApi.getUserInfo(request: request) {user in
+            
+            if user.error == nil {
+                print(user.message as Any)
+
+                self.userView?.apiCallback(response: user)
+                self.userView?.navigation()
+                
+                print("signupSuccesfulgogogo")
+            }
+            else{
+                
+                print(user.message)
+                
+            }
+        }
+    }
+    
+
     
 }

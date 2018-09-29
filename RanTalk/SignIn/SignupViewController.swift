@@ -8,9 +8,12 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserView{
     
+    
+    @IBOutlet var signupView: UIView!
+    
+    let presenter  = UserPresenter(userApi : UserAPI() )
     
     
     @IBAction func userPhoto(_ sender: Any) {
@@ -40,7 +43,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
             (regEmail.text?.isEmpty)!
             
         {
-            displayMessage(userMessage: "All field are quired to fill in")
+            displayMessage(userMessage: "다채워 쫌 ㅂㅅ아")
             return
         }
         
@@ -50,71 +53,59 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
             return
         }
         
-        let postString = "email=\(regEmail.text! as String)&name=\(regName.text! as String)&password=\(regPass.text! as String)"
+        let user = UserRequest(name : regName.text!, email : regEmail.text!  , password : regPass.text!)
+        
+        presenter.onSignUp(request: user)
         
         
-        let url = "https://dry-eyrie-61502.herokuapp.com/users/signup"
+    }
+    
+    
+    func startLoading() {
         
+    }
+    
+    func stopLoading() {
         
-        FirstApi.instance().makeAPICall(url: url, params: postString, method: .POST, success: {(data, response, error, responsedata) in
-            
-            
-            // API call is Successfull
-            
-            let respondata = responsedata
-            
-            //                DispatchQueue.main.async {
-            
-            
-            if ((respondata.contains("message"))) {
-                
-                MyDTO().DTO(type: "message", repondata: respondata, userdatas: { (userdatad) in
-                    
-                    let errormessage = userdatad
-                    print("\(errormessage)")
-                    self.displayMessage(userMessage: "\(errormessage)")
-                    
-                }
-                )
-                
-            } else {
-                
-                
-                DispatchQueue.main.async {
-                    
-                    self.navigationController?.popToRootViewController(animated: true)
-                    
-                    
-                }
-                
-                
-            }
-            
-            return
-            
-        }, failure: {(data, response, error) in
-            
-            self.displayMessage(userMessage: "disconnected")
-            
-            
-            
-        }
-            
-        )
+    }
+    
+    func navigation() {
         
+    }
+    
+    func signInSuccessful(message: String) {
         
+    }
+    
+    func signUpSuccessful(message: String) {
+        
+    }
+    
+    func errorOccurred(message: String) {
+        
+    }
+    
+    func apiCallback() {
+        
+    }
+    
+    func apiCallback(response: BaseResponse) {
+        
+//        performSegue(withIdentifier: "backtosignin", sender: self)
+       
     }
     
     
 /// Cycle Func
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.regEmail.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         self.regName.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         self.regPass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         self.regrePass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        
+        presenter.attachView(view: self)
+        self.hideKeyboardWhenTappedAround(view: signupView)
         
         let mycolor = UIColor.gray
         

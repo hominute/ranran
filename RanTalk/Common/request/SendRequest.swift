@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-struct SendRequest : Mappable {
+struct SendRequest : Mappable, Codable {
     
     
     var message : String?

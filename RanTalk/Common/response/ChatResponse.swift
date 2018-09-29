@@ -17,7 +17,7 @@ class ChatResponse: BaseResponse, Mappable {
     var data : MyData<MessageData>?
     var userId : Int64?
     var hoho : NSArray?
-//    var data : [MyData]?
+
     
     
     required init?(map: Map) {
@@ -32,7 +32,8 @@ class ChatResponse: BaseResponse, Mappable {
         self.data <- map["data"]
         self.userId <- map["userId"]
         self.hoho <- map["hoho"]
-//        self.data <- map["data"]
+
+
     }
     
     

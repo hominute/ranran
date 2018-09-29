@@ -13,5 +13,4 @@ protocol ChatView {
     func clearInputTextField()
     func apiCallback(response: BaseResponse)
     
-    
 }

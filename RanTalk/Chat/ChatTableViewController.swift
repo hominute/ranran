@@ -8,25 +8,12 @@
 
 import UIKit
 
-class ChatTableViewController: UITableViewController, ChatView {
-    func refresh() {
-        
-    }
-    
-    func clearInputTextField() {
-        
-    }
-    
-    func apiCallback(response: BaseResponse) {
-        let List = (response as! RoomResponse).data?.content
-        
-        
-        self.list = List!
-        self.tableView.reloadData()
-        
-    }
-    
+class ChatTableViewController: UITableViewController, ChatView, ChatProtocol {
+  
+    var roomid : Int64?
 
+
+    
      let presenter = ChatPresenter()
     
     
@@ -80,21 +67,28 @@ class ChatTableViewController: UITableViewController, ChatView {
         let row = self.list[indexPath.row]
         let imageurl = row.friendInfo?.photo
         
-        
-        cell.lastMessage.text = "ggg lst"
-     
-        
-        if imageurl != "" as? String {
-            cell.userImage?.isHidden = false
-            cell.userImage?.layer.borderWidth = 2
-            cell.imageLoad(url: imageurl! as String)
-            print("rendered image url = \(imageurl!)")
-        } else {
-            cell.userImage?.isHidden = true
-            print("empty image url = \(imageurl!)")
+        if let roomids = row.roomId {
+        cell.testroomId.text = "\(roomids)"
         }
         
-        
+        if let userids = row.friendInfo?.id {
+        cell.testuserId.text = "\(userids)"
+        }
+        cell.lastMessage.text = row.lastchat
+        cell.roomId = row.roomId!
+        cell.userName.text = row.friendInfo?.name
+        cell.delegte = self
+    
+        if let imageurl = imageurl{
+            cell.userImage?.isHidden = false
+            cell.userImage?.layer.borderWidth = 2
+            cell.imageLoad(url: imageurl as String)
+            print("rendered image url = \(imageurl)")
+        }
+//        else {
+//            cell.userImage?.isHidden = true
+//            print("empty image url = \(imageurl!)")
+//        }
         
         
         return cell
@@ -105,17 +99,71 @@ class ChatTableViewController: UITableViewController, ChatView {
     }
 
  
-    
-    
+
     
     func getList() {
         
+        let uds = UserDefaults.standard
         
+        let loginuserId = uds.integer(forKey: "userId")
+        
+        if loginuserId != 0 {
+        let roomrequest = RoomRequest(userId: Int64(loginuserId), page: 0, size: 10)
+            presenter.getRoom(request: roomrequest)
+            
+        }else {
+            
+            
         let roomrequest = RoomRequest(userId: 2, page: 0, size: 10)
-        presenter.getRoom(request: roomrequest)
+            presenter.getRoom(request: roomrequest)
+        
+        }
+    }
+    
+    func inviteApiCallback(response: InviteResponse) {
         
     }
     
     
+    func ChatCallback(roomId: Int64) {
+        
+        self.roomid = roomId
+        self.performSegue(withIdentifier: "roomchat", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "roomchat") {
+            
+            
+            let uvcc = (segue.destination as! ChatViewController)
+            uvcc.roomId = self.roomid!
+            
+        }
+    }
+    
+    
+    func refresh() {
+        
+    }
+    
+    func clearInputTextField() {
+        
+    }
+    
+    func apiCallback(response: BaseResponse) {
+        let List = (response as! RoomResponse).data?.content
+        
+        self.list = List!
+        
+        
+        self.tableView.reloadData()
+        
+    }
+   
+    
 
 }
+
+

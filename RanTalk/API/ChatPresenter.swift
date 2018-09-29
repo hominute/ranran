@@ -54,6 +54,31 @@ class ChatPresenter {
         }
     }
     
+    func getInvite(request : InviteRequest){
+        userApi.getInvite(request: request) { (response, error) in
+        
+            if error == nil {
+                
+                
+                print(response)
+                
+                if response?.error == nil {
+                    self.chatView?.inviteApiCallback(response: response!)
+//                    self.chatView?.refresh()
+                    
+                }
+                
+                print("signinSuccesfulgogogo")
+            }
+            else{
+                
+                print(response?.message)
+                
+            }
+            
+        }
+    }
+    
     
     
     func onChat(request : ChatRequest){
@@ -63,7 +88,7 @@ class ChatPresenter {
             
             print("content = \(response.data?.content?.toJSON())")
             
-            print("message =-------- asaasdsd\(response.data?.content?.count)")
+            print("message =-------- asaasdsd\(response.data?.content)")
             
             if response.error == nil {
                 self.chatView?.apiCallback(response: response)

@@ -10,207 +10,76 @@ import UIKit
 import Alamofire
 
 
-class ListTableViewController: UITableViewController, InviteProtocol, UserView{
-    func apiCallback() {
-        
-    }
+class ListTableViewController: UITableViewController, InviteProtocol, ListView{
     
-
-    
-    func startLoading() {
-        
-    }
-    
-    func stopLoading() {
-        
-    }
-    
-    func navigation() {
-        
-    }
-    
-    func signInSuccessful(message: String) {
-        
-    }
-    
-    func signUpSuccessful(message: String) {
-        
-    }
-    
-    func errorOccurred(message: String) {
-        
-    }
-    
-    func apiCallback(response: BaseResponse) {
-        
-//        let message = (response as! ChatResponse).data?.content
-        
-        let List = (response as! ListResponse).data?.content
-        
-        self.list = List!
-        self.tableView.reloadData()
-        
-        
-    }
-    
-
     let heightOfheader : CGFloat = 44
+    let listPresenter = ListPresenter()
+    var roomid = Int64()
+    var friendid = Int64()
+    var list = [List]()
     
     
-    let presenter  = UserPresenter(userApi : UserAPI() )
     
-    lazy var list: [List] = {
-        var datalist = [List]()
+    @IBAction func Logout(_ sender: UIStoryboardSegue) {
         
+        listPresenter.logout()
         
-        return datalist
-        
-    }()
+    }
+    
     
     //Cycle Func Start
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        listPresenter.attachlistView(view: self)
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-         self.tableView.reloadData()
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        getList()
-        
-        let uds = UserDefaults.standard
-        
-        let name = uds.string(forKey: "name")
-        if name != nil {
-            navigationItem.title = name
-        }
         
         
-        
+        listPresenter.getTitle()
+        listPresenter.onList()
     }
-   
-    
-    func inviteCallback(roomId: Int64) {
-        print("yoooooooong")
-//        DispatchQueue.main.async {
-//
-//        }
-        self.performSegue(withIdentifier: "gochat", sender: self)
-        
-        let uvc = self.storyboard?.instantiateViewController(withIdentifier: "hohoho") as! ChatViewController
-        
-        uvc.roomId = roomId
-//        self.navigationController?.performSegue(withIdentifier: "gochat", sender: self)
-        
-    
-//        self.navigationController?.pushViewController(uvc, animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-            let url = "https://dry-eyrie-61502.herokuapp.com/users/?page=0&size=20&userId=\(2)"
-        presenter.attachView(view: self)
-        tableView.reloadData()
-//        FirstApi.instance().makeAPICall(url: url, params:"", method: .GET, success: { (data, response, error, responsedata) in
-//            
-//            //             API call is Successfull
-//            
-//            guard let data = data else {
-//                print("request failed \(error)")
-//                return
-//            }
-//            
-//            do {
-//                
-//                let apidata = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
-//                
-//                
-//
-//                let content = apidata["content"] as? NSArray
-//                //                let images = content!["image"] as! NSArray
-//                
-//                for row in content! {
-//                    
-//                    
-//                    let r = row as! NSDictionary
-//                    
-//                    let md = MyData()
-//                    
-////                    md.ID = r["content"] as? String
-//                    
-////                    md.ID = r["id"] as? String
-//                    md.Photo = r["photo"] as? String
-//                    md.Nickname = r["name"] as? String
-//                    md.userId = r["id"] as? Int64
-//                    
-//                    
-//                    print("\(self.list.count)")
-//                    self.list.append(md)
-//                    
-//                    
-//                    DispatchQueue.main.async {
-//                        
-//                        self.tableView.reloadData()
-//                        
-//                    }
-//                }
-//            }
-//            catch  {
-//            }
-//            print("API call is Successfull")
-//            
-//        }, failure: { (data, response, error) in 
-//            // API call Failure
-//            print("fail")
-//        } )
-//        
-        
-        
-    }
-    
     
     
     // Cycle Func End
-
-
-    // MARK: - Table view data source
-
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.list.count
     }
     
-
+    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         
-//        let cell2 = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
-        let row = self.list[indexPath.row]
-        let imageurl = row.photo
-       
-        cell.userName.text = row.name
-        cell.friendId = row.id!
-        cell.shortMessage.text = row.statusMessge
-        cell.delegate = self
+        
+        let friend = self.list[indexPath.row]
         
         
-        if imageurl != "" as? String {
-            cell.userImage?.isHidden = false
-            cell.userImage?.layer.borderWidth = 2
-            cell.imageLoad(url: imageurl! as String)
-            print("rendered image url = \(imageurl!)")
-        } else {
-            cell.userImage?.isHidden = true
-            print("empty image url = \(imageurl!)")
-        }
+        // todo extract
+        cell.userName.text = friend.name
+        cell.friendId = friend.id!
+        cell.shortMessage.text = friend.statusMessge
+        cell.imageLoad(url: friend.photo as String)
+        
+        cell.inviteClickDelegate = self
         
         
         return cell
@@ -243,14 +112,53 @@ class ListTableViewController: UITableViewController, InviteProtocol, UserView{
         }
     }
     
+ 
     
-    func getList() {
+    func inviteClickCallback(friendId: Int64) {
         
+        listPresenter.getInvite(friendId: friendId)
+       
+    }
+    
+    
+    // ViewCallback
+    
+    func inviteApiCallback(response: InviteResponse) {
         
-        let user = ListRequest(userId : 2 , page : 0 , size : 10)
-        
-        self.presenter.onList(request: user)
+        self.roomid = (response.data?.roomId)!
+        self.performSegue(withIdentifier: "gochat", sender: self)
+
         
     }
-
+  
+    
+    func apiCallback(response: BaseResponse) {
+        
+        let List = (response as! ListResponse).data?.content
+        
+        self.list = List!
+        self.tableView.reloadData()
+        
+    }
+    
+    func setTitle(title: String) {
+        
+        
+        navigationItem.title = title
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        if(segue.identifier == "gochat") {
+            
+            let chatViewController = (segue.destination as! ChatViewController)
+            chatViewController.roomId = self.roomid
+            
+            
+        }
+        
+    }
 }
+
+
