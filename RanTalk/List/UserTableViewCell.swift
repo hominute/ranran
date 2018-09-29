@@ -32,9 +32,9 @@ class UserTableViewCell: ListTableViewCell{
     
 //Utility Func
     
-    func imageLoad(url: String) {
-        if let url = url {
-            let url = URL(string: url)
+    func imageLoad(imageUrl: String?) {
+        if let imageUrl = imageUrl {
+            let url = URL(string: imageUrl)
         
             userImage?.kf.setImage(with: url)
         }

@@ -32,12 +32,12 @@ class ListPresenter {
     func getTitle(){
         
         
-        let name = uds.string(forKey: "name")
+        var name = uds.string(forKey: "name")
         if name == nil {
             
             name = "AppTest"
         }
-        self.listView?.setTitle(title: name)
+        self.listView?.setTitle(title: name!)
     }
     
     func logout(){
@@ -75,9 +75,9 @@ class ListPresenter {
     
     
     func getInvite(friendId: Int64){
-        if isInviting = false {
+        if isInviting == false {
             let loginuserId = uds.integer(forKey: "userId")
-            let request = InviteRequest(friendId: friendId, userId: loginuserId)
+            let request = InviteRequest(friendId: friendId, userId: Int64(loginuserId))
             isInviting = true
             userApi.getInvite(request: request) { (response, error) in
                 
@@ -92,18 +92,19 @@ class ListPresenter {
                         
                     }else{
                 
-                        self.listView?.displayMessage(message: response?.message)
-                        
+                        self.listView?.displayMessage(message: response?.message as! String)
+                    
+                        print("getInvite error")
                     }
                     
-                    print("getInvite error")
+                    
                     
                 }else{
                     
                     print(response?.message)
                     
                 }
-                isInviting = false
+                self.isInviting = false
             }
         }
     }

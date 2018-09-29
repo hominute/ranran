@@ -77,7 +77,7 @@ class ListTableViewController: UITableViewController, InviteProtocol, ListView{
         cell.userName.text = friend.name
         cell.friendId = friend.id!
         cell.shortMessage.text = friend.statusMessge
-        cell.imageLoad(url: friend.photo as String)
+        cell.imageLoad(imageUrl: friend.photo)
         
         cell.inviteClickDelegate = self
         
@@ -92,10 +92,10 @@ class ListTableViewController: UITableViewController, InviteProtocol, ListView{
     
     // Utility Func
     
-    func displayMessage(userMessage:String) -> Void {
+    func displayMessage(message:String) -> Void {
         DispatchQueue.main.async
             {
-                let alertController = UIAlertController(title:"Alert", message: userMessage, preferredStyle:.alert)
+                let alertController = UIAlertController(title:"Alert", message: message, preferredStyle:.alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                     
                     print("Ok button tapped")

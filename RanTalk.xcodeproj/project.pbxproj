@@ -288,6 +288,8 @@
 		EACF7EFE213A8B0A00939BB7 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				EA1995F9214C05C700B28EB7 /* ChatView.swift */,
+				EA1995FD214C293500B28EB7 /* ChatPresenter.swift */,
 				EACF7EFF213A8D9700939BB7 /* ChatTableViewController.swift */,
 				EACF7F01213A8E3900939BB7 /* ChatTableViewCell.swift */,
 				EACF7F03213A90D900939BB7 /* ChatViewController.swift */,
@@ -322,9 +324,7 @@
 				EAD73B6E214586860011190E /* UserView.swift */,
 				EAB250DA2155756B00B81B34 /* SplashView.swift */,
 				EAFAA4F8215FD97900C12911 /* InviteView.swift */,
-				EA1995F9214C05C700B28EB7 /* ChatView.swift */,
 				EAD73B70214586A30011190E /* UserPresenter.swift */,
-				EA1995FD214C293500B28EB7 /* ChatPresenter.swift */,
 				EAB250D8215573A100B81B34 /* SplashPresenter.swift */,
 				EAD73B7D214700000011190E /* testproto.swift */,
 			);

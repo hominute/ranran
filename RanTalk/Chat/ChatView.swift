@@ -10,7 +10,10 @@
 
 protocol ChatView {
     func refresh()
+    func refreshRange()
     func clearInputTextField()
     func apiCallback(response: BaseResponse)
+    func addChat(chat: MessageData)
+    func scrollToBottom()
     
 }

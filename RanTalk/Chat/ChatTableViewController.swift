@@ -9,6 +9,18 @@
 import UIKit
 
 class ChatTableViewController: UITableViewController, ChatView, ChatProtocol {
+    func refreshRange() {
+        
+    }
+    
+    func addChat(chat: MessageData) {
+        
+    }
+    
+    func scrollToBottom() {
+        
+    }
+    
   
     var roomid : Int64?
 
