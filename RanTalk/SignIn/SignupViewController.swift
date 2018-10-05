@@ -96,7 +96,8 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(cancelbuttonpressed))
         let labelbutton = UIBarButtonItem(customView: testlabel)
-        
+        ///asdfasdf
+        let asd = "asdf"
         toolBar.setItems([cancelButton,spaceButton ,labelbutton,spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         sex.inputAccessoryView = toolBar
