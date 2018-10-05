@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdTableViewCell: ListTableViewCell {
+class AdTableViewCell: UserListTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

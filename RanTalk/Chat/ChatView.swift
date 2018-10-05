@@ -14,6 +14,7 @@ protocol ChatView {
     func clearInputTextField()
     func apiCallback(response: BaseResponse)
     func addChat(chat: MessageData)
+    func moreMessageCallback(response: ChatResponse)
     func scrollToBottom()
     
 }

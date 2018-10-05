@@ -40,44 +40,7 @@ class UserAPI {
         }
     }
     
-    var useridPath : String?
-    
-    func getUserInfo(request : ProfileRequest, callBack : @escaping (ProfileResponse) -> Void){
-        let uds = UserDefaults.standard
-        
-        let loginuserId = uds.integer(forKey: "userId")
-        
-        if loginuserId != 0 {
-            
-            useridPath = "\(loginuserId)"
-        }else {
-            
-            useridPath = "2"
-        }
-        
-        let parameters  : Parameters =  ["userId" : request.userId!]
-        Alamofire.request(API.USER+"\(useridPath!)", method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: [:]).responseObject {
-            (response: DataResponse<ProfileResponse>)  in
-            let data = response.data
-            //            print("fullresponse = \(fullresponse)")
-            let responsedata = String(data: data!, encoding: .utf8)!
-            print("full responsedata = \(responsedata)")
-            
-            switch response.result {
-                
-            case .success:
-                DispatchQueue.main.async {
-                    callBack(response.result.value!)
-                    
-                    print("response = \(response)")
-                }
-                break
-            case .failure(let error):
-                print(error)
-                print("error")
-            }
-        }
-    }
+
     
     func onSignUp(request : UserRequest , callBack : @escaping  (UserResponse) -> Void) {
         
@@ -103,12 +66,123 @@ class UserAPI {
         }
     }
     
-    func onList(request : ListRequest , callBack : @escaping  (ListResponse) -> Void) {
+    func onList(request : UserListRequest , callBack : @escaping  (UserListResponse) -> Void) {
         
         let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
         
         Alamofire.request(API.LIST, method: .get , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
-            (response: DataResponse<ListResponse>)  in
+            (response: DataResponse<UserListResponse>)  in
+            
+            let data = response.data
+            let responsedata = String(data: data!, encoding: .utf8)!
+            print("full responsedata = \(responsedata)")
+            
+            
+            switch response.result {
+            case .success:
+                DispatchQueue.main.async {
+                    print("resonse = \(response)")
+                    callBack(response.result.value!)
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    var useridPath : String?
+    
+    func getUserInfo(userId : Int64, callBack : @escaping (UserProfileResponse) -> Void){
+ 
+        let url = API.USERINFO + "/\(userId)"
+  
+        Alamofire.request(url, method: .get).responseObject {
+            (response: DataResponse<UserProfileResponse>)  in
+            let data = response.data
+            //            print("fullresponse = \(fullresponse)")
+            let responsedata = String(data: data!, encoding: .utf8)!
+            print("full responsedata = \(responsedata)")
+            
+            switch response.result {
+                
+            case .success:
+                DispatchQueue.main.async {
+                    callBack(response.result.value!)
+                    
+                    print("response = \(response)")
+                }
+                break
+            case .failure(let error):
+                print(error)
+                print("error")
+            }
+        }
+    }
+    
+    func getFavoriteList(userId : Int64 , callBack : @escaping  (UserListResponse) -> Void) {
+        
+        let url = API.FAVORITE + "/\(userId)"
+        
+        Alamofire.request(url, method: .get ).responseObject {
+            (response: DataResponse<UserListResponse>)  in
+            
+            let data = response.data
+            let responsedata = String(data: data!, encoding: .utf8)!
+            print("full responsedata = \(responsedata)")
+            
+            
+            switch response.result {
+            case .success:
+                DispatchQueue.main.async {
+                    print("resonse = \(response)")
+                    callBack(response.result.value!)
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func addFavoriteList(request : UserListRequest , callBack : @escaping  (UserListResponse) -> Void) {
+        
+        let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
+        
+        Alamofire.request(API.FAVORITE, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+            (response: DataResponse<UserListResponse>)  in
+            
+            let data = response.data
+            let responsedata = String(data: data!, encoding: .utf8)!
+            print("full responsedata = \(responsedata)")
+            
+            
+            switch response.result {
+            case .success:
+                DispatchQueue.main.async {
+                    print("resonse = \(response)")
+                    callBack(response.result.value!)
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
+    func deleteFavoriteList(request : UserListRequest , callBack : @escaping  (UserListResponse) -> Void) {
+        
+        let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
+        
+        Alamofire.request(API.FAVORITE, method: .delete , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+            (response: DataResponse<UserListResponse>)  in
             
             let data = response.data
             let responsedata = String(data: data!, encoding: .utf8)!

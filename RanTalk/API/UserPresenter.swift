@@ -25,7 +25,6 @@ class UserPresenter {
     }
     
     
-    
     func detachView(){
         self.userView = nil
     }
@@ -84,24 +83,24 @@ class UserPresenter {
         }
     }
     
-    func getUserInfo(request : ProfileRequest){
-        userApi.getUserInfo(request: request) {user in
-            
-            if user.error == nil {
-                print(user.message as Any)
-
-                self.userView?.apiCallback(response: user)
-                self.userView?.navigation()
-                
-                print("signupSuccesfulgogogo")
-            }
-            else{
-                
-                print(user.message)
-                
-            }
-        }
-    }
+//    func getUserInfo(request : UserProfileRequest){
+//        userApi.getUserInfo(request: request) {user in
+//            
+//            if user.error == nil {
+//                print(user.message as Any)
+//
+//                self.userView?.apiCallback(response: user)
+//                self.userView?.navigation()
+//                
+//                print("signupSuccesfulgogogo")
+//            }
+//            else{
+//                
+//                print(user.message)
+//                
+//            }
+//        }
+//    }
     
 
     

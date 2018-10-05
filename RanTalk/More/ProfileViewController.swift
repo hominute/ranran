@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let user = ProfileRequest(userId: userId)
         
-        presenter.getUserInfo(request: user)
+//        presenter.getUserInfo(request: user)
         
 //        let uds = UserDefaults.standard
 //

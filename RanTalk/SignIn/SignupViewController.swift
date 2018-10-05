@@ -8,9 +8,14 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserView{
+class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserView, UIPickerViewDelegate, UIPickerViewDataSource{
+
+    
+    @IBOutlet var testlabel: UILabel!
     
     
+    var sexOption = ["남자","여자"]
+    var pickerView = UIPickerView()
     @IBOutlet var signupView: UIView!
     
     let presenter  = UserPresenter(userApi : UserAPI() )
@@ -34,6 +39,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet var signUpButton: UIButton!
     
+    @IBOutlet var sex: UITextField!
     
     @IBAction func signUp(_ sender: Any) {
         
@@ -59,7 +65,91 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
     }
+    @objc func donebuttonpressed (){
+        
+        print("donebuttonpressed")
+    }
     
+    @objc func cancelbuttonpressed (){
+        
+        print("cancelbuttonpressed")
+    }
+    
+    /// Cycle Func
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sex.inputView = pickerView
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        testlabel.text = "wasdf"
+        
+        
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+    
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(donebuttonpressed))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(cancelbuttonpressed))
+        let labelbutton = UIBarButtonItem(customView: testlabel)
+        
+        toolBar.setItems([cancelButton,spaceButton ,labelbutton,spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        sex.inputAccessoryView = toolBar
+        
+        
+        
+        self.regEmail.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        self.regName.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        self.regPass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        self.regrePass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        presenter.attachView(view: self)
+        self.hideKeyboardWhenTappedAround(view: signupView)
+        
+        let mycolor = UIColor.gray
+        
+        userPhotoOL.layer.masksToBounds = true
+        userPhotoOL.layer.cornerRadius = 100/2
+        userPhotoOL.layer.borderWidth = 1
+        userPhotoOL.layer.borderColor = mycolor.cgColor
+        
+        
+        
+    }
+    
+    ///Cycle Func End
+    //Picker View delegate
+   
+    
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sexOption.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sexOption[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        sex.text = sexOption[row]
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+  
+    //Picker View delegate end
     
     func startLoading() {
         
@@ -96,29 +186,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     
-/// Cycle Func
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.regEmail.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        self.regName.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        self.regPass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        self.regrePass.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        presenter.attachView(view: self)
-        self.hideKeyboardWhenTappedAround(view: signupView)
-        
-        let mycolor = UIColor.gray
-        
-        userPhotoOL.layer.masksToBounds = true
-        userPhotoOL.layer.cornerRadius = 100/2
-        userPhotoOL.layer.borderWidth = 1
-        userPhotoOL.layer.borderColor = mycolor.cgColor
-        
-        
-        
-    }
 
-///Cycle Func End
     
     
     

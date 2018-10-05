@@ -10,13 +10,15 @@ import UIKit
 
 import Kingfisher
 
-class UserTableViewCell: ListTableViewCell{
+class UserTableViewCell: UserListTableViewCell{
     
     
     var myId = Int64()
     var friendId = Int64()
+    var friendName = String()
+    var statusmessage = String()
     var inviteClickDelegate: InviteProtocol?
- 
+    var profilClickDelegate : UserProfileProtocol?
     
     @IBOutlet var userImage: UIImageView!
     
@@ -37,23 +39,35 @@ class UserTableViewCell: ListTableViewCell{
             let url = URL(string: imageUrl)
         
             userImage?.kf.setImage(with: url)
+        
+            
         }
     }
     
     
-
+    func clickProfile (){
+        
+        self.profilClickDelegate?.profileClickCallback(friendName : friendName, statusmessage : statusmessage)
+        print("click profile")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        userImage?.layer.borderWidth = 2
+        userImage?.layer.borderWidth = 1
+        let customview = UIView()
+        customview.backgroundColor = UIColor.rgba(red: 138, green: 176, blue: 240, alpha: 0.5)
+        self.selectedBackgroundView = customview
+        userImage?.layer.cornerRadius = userImage.bounds.width * 0.5
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+     
         // Configure the view for the selected state
     }
+    
 
     
     

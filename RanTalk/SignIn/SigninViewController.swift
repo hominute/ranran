@@ -95,7 +95,7 @@ class SigninViewController: UIViewController {
         let loginId = uds.integer(forKey: "userId")
         
         if loginId != 0 {
-            self.performSegue(withIdentifier: "logined", sender: self)
+            self.performSegue(withIdentifier: "autologin", sender: self)
             
             
         }

@@ -23,15 +23,17 @@ class ChatPresenter: StompClientLibDelegate {
     }
     
     
+    
     private var userApi = UserAPI()
     
     private var chatView : ChatView?
     
     let uds = UserDefaults.standard
-    
     var page = 0
     let size = 24
     var roomId: Int64?
+    var totalpages : Int64?
+    var totalMessages : Int64?
     
     var isLoading = false
     
@@ -98,16 +100,16 @@ class ChatPresenter: StompClientLibDelegate {
                 print("message =-------- asaasdsd\(response.data?.content)")
                 
                 if response.error == nil {
-                    self.chatView?.apiCallback(response: response)
                     
-                    
-                    
+            
                     if self.page == 0 {
+                        self.chatView?.apiCallback(response: response)
                         self.chatView?.refresh()
                         self.socketConnect()
                         self.chatView?.scrollToBottom()
                         
                     } else {
+                        self.chatView?.moreMessageCallback(response: response)
                         self.chatView?.refreshRange()
                     }
                     
@@ -133,10 +135,15 @@ class ChatPresenter: StompClientLibDelegate {
     
     func sendChat(roomId: Int64?, chat: String?){
         do{
+            let roomIds = roomId
             let userId = uds.integer(forKey: "userId")
             let chat = ["message" : chat! , "roomId" : roomId! , "userId" : userId] as [String : Any]
-            self.socketClient.sendJSONForDict(dict: chat as AnyObject, toDestination: SocketPath.TOPIC+"\(roomId)")
+            self.socketClient.sendJSONForDict(dict: chat as AnyObject, toDestination: "/publish/chats")
             self.chatView?.clearInputTextField()
+            
+            print("roomId = \(roomIds!)")
+            print("userId = \(userId)")
+            print("message = \(chat)")
         }
     }
     
@@ -177,7 +184,36 @@ class ChatPresenter: StompClientLibDelegate {
             md.userId = messagedatas["userId"] as? Int64
             md.message = messagedatas["message"] as? String
             let tmpDate = messagedatas["createdDate"] as? AnyObject
-            md.createdDate = "\(tmpDate)"
+//            md.createdDate = "\(tmpDate)"
+//            print("\(tmpDate)")
+            
+            
+            if tmpDate != nil {
+                
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//                dateFormatter.locale = Locale(identifier: "ko")
+                let date = dateFormatter.date(from: tmpDate as! String)
+                if let date = date {
+                    
+                    dateFormatter.dateStyle = .none
+                    dateFormatter.timeStyle = .short
+                    let finaldate = dateFormatter.string(from: date)
+                    
+                    md.createdDate = "\(finaldate)"
+                    
+                }
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
             md.photo = messagedatas["photo"] as? String
             
             let uds = UserDefaults.standard
@@ -210,7 +246,8 @@ class ChatPresenter: StompClientLibDelegate {
     
     func stompClientDidConnect(client: StompClientLib!) {
         
-        self.socketClient.subscribe(destination: SocketPath.TOPIC+"\(self.roomId)")
+        self.socketClient.subscribe(destination: "/subscribe/chats/\(self.roomId!)")
+        print("selfroomid = \(self.roomId!)")
         
     }
     

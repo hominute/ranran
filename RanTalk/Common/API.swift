@@ -19,7 +19,8 @@ class API: NSObject {
     static let CHAT = ROOT+"/chats"
     static let INVITE = ROOT+"/rooms/invite"
     static let ROOM = ROOT+"/rooms/"
-    static let USER = ROOT+"/users/info/"
+    static let USERINFO = ROOT+"/users/info/"
+    static let FAVORITE = ROOT+"/favorites"
     
     static let POPUPROOT = "https://dry-eyrie-61502.herokuapp.com"
     static let EMERGENCY = POPUPROOT+"/popup/emergency"

@@ -61,11 +61,22 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         var firstrow = self.tableView.indexPathsForVisibleRows?.first?.row
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
-        print("offsetY = \(offsetY)")
-        print("first visiblerow = \(firstrow)")
+//        print("offsetY = \(offsetY)")
+//        print("first visiblerow = \(firstrow)")
+        
+        
         if self.list.count != 0 {
+            
+            
+            if self.list.count > 23 {
+                
+            
+            
             if firstrow! == 4 {
                 beginBatchFetch()
+                
+            }
+                
                 
             }
         }
@@ -120,6 +131,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tabBarController?.tabBar.isHidden = true
         presenter = ChatPresenter(roomId: self.roomId)
         presenter?.attachChatView(view: self)
+        self.tableView.backgroundView = UIImageView(image: UIImage(named:"background"))
+        self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 138, green: 176, blue: 212)
         
     }
     
@@ -222,7 +235,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        cell.message.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         cell.message.layer.masksToBounds = true
         cell.message.text = messageData.message
-        cell.createdDate.text = messageData.createdDate
+        if messageData.createdDate != nil {
+            
+            let dateFormatter = DateFormatter()
+
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+            let date = dateFormatter.date(from: messageData.createdDate!)
+            if let date = date {
+     
+                    dateFormatter.dateStyle = .none
+                    dateFormatter.timeStyle = .short
+                    let finaldate = dateFormatter.string(from: date)
+         
+                    cell.createdDate.text = "\(finaldate)"
+            
+            }
+          
+        }
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
         
@@ -241,8 +271,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.message.layer.cornerRadius = cell.message.frame.size.height / 5
         cell.message.layer.masksToBounds = true
         cell.message.text = messageData.message!
+        
+        
         if messageData.createdDate != nil {
-            cell.createdDate.text = messageData.createdDate
+            
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+         
+            let date = dateFormatter.date(from: messageData.createdDate!)
+            if let date = date {
+                
+                dateFormatter.dateStyle = .none
+                dateFormatter.timeStyle = .short
+                let finaldate = dateFormatter.string(from: date)
+                
+                cell.createdDate.text = "\(finaldate)"
+                
+            }
+            
         }
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
@@ -437,35 +484,61 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = (response as! ChatResponse).data?.content
         
+        presenter?.totalpages = (response as! ChatResponse).data?.totalPages
+        presenter?.totalMessages = (response as! ChatResponse).data?.totalElements
+        
         print("current list count = \(self.list.count)")
-        DispatchQueue.main.async {
+        
             
             
             if message != nil {
                 self.list = (message?.reversed())! + self.list
                 
+                
+              
             }
-            
+
+        
+        
+        
+        
+    }
+    
+    func moreMessageCallback(response: ChatResponse) {
+        
+        let message = response.data?.content
+
+        presenter?.totalpages = response.data?.totalPages
+        presenter?.totalMessages = response.data?.totalElements
+        
+        if message != nil {
+            self.list = (message?.reversed())! + self.list
             
         }
+
+        
+        
     }
     
     func refresh() {
         self.tableView.reloadData()
     }
-    
+    var messageToAdd = 24
     func refreshRange(){
-        self.tableView.reloadData()
-//        var indexPaths = [IndexPath(row: 0...10 , section: 0)]()
-//        var count = 0
-//        while(count < 10) {
-//            var indexPath = IndexPath()
-//            indexPath.row = count
-//            indexPaths.append(indexPath)
-//            count = count + 1
-//        }
-//
-//        self.tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.none)
+        DispatchQueue.main.async {
+            let beforeTableViewContentHeight = self.tableView.contentSize.height
+            let beforeTableViewOffset = self.tableView.contentOffset.y
+            self.tableView.reloadData()
+            self.tableView.layer.layoutIfNeeded()
+            let offSet = CGPoint(x: 0, y: -64 + (self.tableView.contentSize.height - beforeTableViewContentHeight))
+            self.tableView.contentOffset = offSet
+            
+            
+            print("current contentsize = \(self.tableView.contentSize.height)")
+            print("before contenthieght = \(beforeTableViewContentHeight)")
+        }
+    
+        
     }
     
     
