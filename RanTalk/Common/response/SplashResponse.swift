@@ -11,20 +11,18 @@ import Foundation
 import UIKit
 import ObjectMapper
 
-class SplashResponse: BaseResponse, Mappable {
+class SplashResponse:  BaseResponse {
     
     var data : Splash?
-    var message : String? = nil
-    var error : String?
+
     
     required init?(map: Map) {
-        
+
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         self.data <- map["data"]
-        self.message <- map["message"]
-        self.error <- map["error"]
+
     }
     
     class Splash : Mappable {

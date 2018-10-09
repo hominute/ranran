@@ -9,6 +9,10 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UserView{
+    func apiCallback(response: UserResponse) {
+        
+    }
+    
 
     var userId = Int64()
 

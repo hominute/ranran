@@ -8,13 +8,11 @@
 
 
 
-protocol ChatView {
+protocol ChatListView {
     func refresh()
     func refreshRange()
-    func clearInputTextField()
-    func apiCallback(response: BaseResponse)
-    func addChat(chat: MessageData)
-    func moreMessageCallback(response: ChatResponse)
+    func apiCallback(response: RoomResponse)
+
     func scrollToBottom()
     
 }

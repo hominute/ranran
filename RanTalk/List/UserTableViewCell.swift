@@ -47,7 +47,7 @@ class UserTableViewCell: UserListTableViewCell{
     
     func clickProfile (){
         
-        self.profilClickDelegate?.profileClickCallback(friendName : friendName, statusmessage : statusmessage)
+        self.profilClickDelegate?.profileClickCallback(friendId : friendId, friendName : friendName, statusmessage : statusmessage)
         print("click profile")
     }
 

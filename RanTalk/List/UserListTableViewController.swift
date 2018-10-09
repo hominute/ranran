@@ -14,9 +14,6 @@ import Kingfisher
 class UserListTableViewController: UITableViewController, InviteProtocol, UserProfileProtocol ,UserListView{
 
     
-
-    
-
     
     
     let heightOfheader : CGFloat = 44
@@ -44,7 +41,7 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        listPresenter.getMyList()
         listPresenter.attachlistView(view: self)
         self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 138, green: 176, blue: 212)
         
@@ -60,14 +57,20 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         listPresenter.getTitle()
         listPresenter.onList()
         listPresenter.getFavoriteList()
-        listPresenter.getMyList()
+        
     }
     
     
     // Cycle Func End
     
     
-    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.font = UIFont.systemFont(ofSize: 13)
+            headerView.textLabel?.textColor = .black
+            headerView.backgroundView?.backgroundColor = UIColor.rgb(red: 138, green: 176, blue: 212)
+        }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -75,10 +78,11 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         if self.favoriteList.count == 0 {
             
             return 2
-        }else {
-            
-            return 3
         }
+        
+        return 3
+        
+        
         
     }
     
@@ -89,27 +93,23 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
             
             return self.myList.count
         }
+        
         if section == 1 {
             if self.favoriteList.count == 0 {
                 
                 return self.list.count
-            }else {
-                
-        return self.favoriteList.count
-                
             }
+            
+            return self.favoriteList.count
+            
+            
         }else {
-        return self.list.count
+            
+            return self.list.count
         }
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.font = UIFont.systemFont(ofSize: 13)
-            headerView.textLabel?.textColor = .black
-            headerView.backgroundView?.backgroundColor = UIColor.rgb(red: 138, green: 176, blue: 212)
-        }
-    }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -122,11 +122,12 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
                 
                 return "접속한 사람들"
             }
-                return "찜목록"
+            return "찜목록"
             
             
             
         }else{
+            
             return "접속한 사람들"
         }
     }
@@ -134,35 +135,47 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("current indexpath = \(indexPath.row)")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
-        
+        //        var mylist : List?
         var friend : List?
-        
+        //        if self.myList.count != 0
         if indexPath.section == 0 {
-        
-            friend = myList[indexPath.row]
-        }
-        if indexPath.section == 1 {
             
-            if self.favoriteList.count == 0 {
-                friend = self.list[indexPath.row]
-            }else {
-                  friend = self.favoriteList[indexPath.row]
+            friend = myList[indexPath.row]
+            
+            
+            
+        }
+        if indexPath.section >= 1 {
+            
+            if indexPath.section == 1 {
                 
+                
+                if self.favoriteList.count != 0 {
+                    friend = self.favoriteList[indexPath.row]
+                }else {
+                    
+                    if self.list.count != 0 {
+                    friend = self.list[indexPath.row]
+                        
+                    }
+                }
+            }else {
+                
+                if self.list.count != 0 {
+                    friend = self.list[indexPath.row]
+                    
+                }
             }
             
             
-        } else {
-            
-            friend = self.list[indexPath.row]
         }
-        
         
         // todo extract
         cell.userName.text = friend?.name
         cell.friendId = (friend?.id)!
-//        cell.friendName = (friend?.name)!
+        //        cell.friendName = (friend?.name)!
         cell.shortMessage.text = friend?.statusMessge
         
         cell.imageLoad(imageUrl: friend?.photo)
@@ -171,6 +184,8 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         cell.profilClickDelegate = self
         cell.friendName = friend?.name ?? ""
         cell.statusmessage = friend?.statusMessge ?? "-"
+        
+        
         
         
         return cell
@@ -182,20 +197,20 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let row = indexPath.row
+        //        tableView.deselectRow(at: indexPath, animated: true)
+        //        let row = indexPath.row
         
         let cell = tableView.cellForRow(at: indexPath) as! UserTableViewCell
         
-
+        
         
         cell.clickProfile()
-       
-
+        
+        
         
     }
-
-
+    
+    
     // Utility Func
     
     func displayMessage(message:String) -> Void {
@@ -218,12 +233,12 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         }
     }
     
- 
+    
     
     func inviteClickCallback(friendId: Int64) {
         
-//        listPresenter.getInvite(friendId: friendId)
-       
+        //        listPresenter.getInvite(friendId: friendId)
+        
     }
     
     
@@ -233,17 +248,17 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         
         self.roomid = (response.data?.roomId)!
         self.performSegue(withIdentifier: "gochat", sender: self)
-
+        
         
     }
-  
     
-    func apiCallback(response: BaseResponse) {
+    
+    func apiCallback(response: UserListResponse) {
         
         let List = (response as! UserListResponse).data?.content
         if List != nil {
-        self.list = List!
-        self.tableView.reloadData()
+            self.list = List!
+            self.tableView.reloadData()
             
         }
         
@@ -268,13 +283,14 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         
     }
     
-    func profileClickCallback(friendName: String, statusmessage: String) {
+    func profileClickCallback(friendId : Int64, friendName: String, statusmessage: String) {
         ImageCache.default.calculateDiskCacheSize(completion:{ size in
             
             print("imagecache size = \(size)")
         })
         self.friendName = friendName
         self.statusmessage = statusmessage
+        self.friendid = friendId
         print("\(self.friendName)")
         print("\(self.statusmessage)")
         performSegue(withIdentifier: "listtoprofile", sender: self)
@@ -298,7 +314,7 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
             
             let chatViewController = (segue.destination as! ChatViewController)
             chatViewController.roomId = self.roomid
-                
+            
             
         }
         
@@ -310,12 +326,18 @@ class UserListTableViewController: UITableViewController, InviteProtocol, UserPr
         if(segue.identifier == "listtoprofile") {
             
             let userProfileViewController = (segue.destination as! UserProfileViewController)
-//            userProfileViewController.myName = "hoho"
+            //            userProfileViewController.myName = "hoho"
             userProfileViewController.friendName = self.friendName
             userProfileViewController.statusmessage = self.statusmessage
+            userProfileViewController.friendId = self.friendid
             
-//            userProfileViewController.profileImage.
-            
+            //            let uds = UserDefaults.standard
+            //            let loginId = uds.integer(forKey: "userId")
+            //            if friendid == Int64(loginId) {
+            //
+            //                userProfileViewController.myProfile = true
+            //            }
+            //
         }
         
     }

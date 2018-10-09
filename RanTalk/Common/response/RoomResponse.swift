@@ -9,33 +9,27 @@
 import UIKit
 import ObjectMapper
 
-class RoomResponse: BaseResponse, Mappable {
+class RoomResponse: BaseResponse {
     
-    var message : String? = nil
-    var error : String?
+
     var user : User?
     var data : MyData<Room>?
-    var odata : Room?
     var userId : Int64?
   
     
     
     required init?(map: Map) {
-        
-        
-        //    content = [MessageData]() as NSArray
+
         
         
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         self.user <- map["user"]
-        self.message <- map["message"]
-        self.error <- map["error"]
         self.data <- map["data"]
         self.userId <- map["userId"]
-       
-        self.odata <- map["data"]
+
+
     }
     
     

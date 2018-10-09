@@ -31,7 +31,7 @@ class UserAPI {
                 DispatchQueue.main.async {
                     callBack(response.result.value!)
      
-                    print("response = \(response)")
+                  
                 }
                 break
             case .failure(let error):
@@ -75,7 +75,7 @@ class UserAPI {
             
             let data = response.data
             let responsedata = String(data: data!, encoding: .utf8)!
-            print("full responsedata = \(responsedata)")
+            print("get list responsedata = \(responsedata)")
             
             
             switch response.result {
@@ -104,7 +104,7 @@ class UserAPI {
             let data = response.data
             //            print("fullresponse = \(fullresponse)")
             let responsedata = String(data: data!, encoding: .utf8)!
-            print("full responsedata = \(responsedata)")
+            print("get userinfo responsedata = \(responsedata)")
             
             switch response.result {
                 
@@ -131,7 +131,7 @@ class UserAPI {
             
             let data = response.data
             let responsedata = String(data: data!, encoding: .utf8)!
-            print("full responsedata = \(responsedata)")
+            print("get favorite responsedata = \(responsedata)")
             
             
             switch response.result {
@@ -149,12 +149,12 @@ class UserAPI {
         }
     }
     
-    func addFavoriteList(request : UserListRequest , callBack : @escaping  (UserListResponse) -> Void) {
+    func addFavoriteList(request : FavoriteRequest , callBack : @escaping  (FavoriteResponse) -> Void) {
         
-        let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
+        let parameters  : Parameters =  ["userId" : request.userId! , "friendId" : request.friendId! ]
         
         Alamofire.request(API.FAVORITE, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
-            (response: DataResponse<UserListResponse>)  in
+            (response: DataResponse<FavoriteResponse>)  in
             
             let data = response.data
             let responsedata = String(data: data!, encoding: .utf8)!
@@ -177,12 +177,12 @@ class UserAPI {
     }
     
     
-    func deleteFavoriteList(request : UserListRequest , callBack : @escaping  (UserListResponse) -> Void) {
+    func deleteFavoriteList(request : FavoriteRequest , callBack : @escaping  (FavoriteResponse) -> Void) {
         
-        let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
+        let parameters  : Parameters =  ["userId" : request.userId! , "friendId" : request.friendId! ]
         
         Alamofire.request(API.FAVORITE, method: .delete , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
-            (response: DataResponse<UserListResponse>)  in
+            (response: DataResponse<FavoriteResponse>)  in
             
             let data = response.data
             let responsedata = String(data: data!, encoding: .utf8)!

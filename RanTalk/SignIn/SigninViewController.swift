@@ -145,7 +145,9 @@ class SigninViewController: UIViewController {
 }
 
 extension SigninViewController : UserView {
-    func apiCallback(response: BaseResponse) {
+ 
+    
+    func apiCallback(response: UserResponse) {
         
         
        let userdata = ShareReferences.shared.getUser()

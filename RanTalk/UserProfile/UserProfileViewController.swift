@@ -8,13 +8,28 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, UserProfileView {
+
+    var myProfile = false
+    var chatProfile = false
     
+    var isfavoriting = false
+    let uds = UserDefaults.standard
+    
+    var presenter : UserProfilePresenter?
     var friendName = ""
     var myName = ""
     var statusmessage = ""
+    var favorite = false
+    var friendId = Int64()
     
-    @IBOutlet var banView: UIView!
+    @IBOutlet var chatButtonView: UIView!
+    
+    @IBOutlet var giftButtonView: UIView!
+    
+    @IBOutlet var banButtonView: UIView!
+    
+    
     
     @IBOutlet var profileImage: UIImageView!
     
@@ -38,6 +53,29 @@ class UserProfileViewController: UIViewController {
     
     
     @IBAction func favorite(_ sender: Any) {
+      
+        if favorite == false {
+            let loginId = self.uds.integer(forKey: "userId")
+            
+            let favoriterequest = FavoriteRequest(userId: Int64(loginId), friendId: friendId)
+            presenter?.addFavoriteList(request: favoriterequest)
+            
+            
+            print("favorite true")
+            return
+        }
+        
+        if favorite == true {
+            let loginId = self.uds.integer(forKey: "userId")
+            let favoriterequest = FavoriteRequest(userId: Int64(loginId), friendId: friendId)
+            
+            
+            print("favorite false")
+            return
+        }
+            
+        
+        
         print("favorite button tapped")
     }
     
@@ -58,7 +96,7 @@ class UserProfileViewController: UIViewController {
         
     }
     
-    var presenter : UserProfilePresenter?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,11 +112,58 @@ class UserProfileViewController: UIViewController {
         self.statusMessage.text = self.statusmessage
         
         profileImage.layer.cornerRadius = profileImage.bounds.width * 0.5
+        
+        
+        let uds = UserDefaults.standard
+        
+        let loginId = uds.integer(forKey: "userId")
+        
+        if friendId == Int64(loginId) {
+            
+            self.chatButtonView.isHidden = true
+            self.banButtonView.isHidden = true
+        }
+        
+        
+        if myProfile == true {
+            
+           
+        }
+        
+        if chatProfile == true {
+            
+            self.chatButtonView.isHidden = true
+        }
 
         // Do any additional setup after loading the view.
     }
     
 
+    func favoriteCallback(response: FavoriteResponse) {
+        
+        if response.data == false {
+            
+            favorite = true
+        }else{
+            
+            favorite = false
+        }
+        
+
+        
+      
+    }
+    
+    
+    func apiCallback(response: UserProfileResponse) {
+        
+    }
+    
+    func navigation() {
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 

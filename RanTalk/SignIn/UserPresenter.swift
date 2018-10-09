@@ -35,23 +35,23 @@ class UserPresenter {
         userApi.onSignIn(request: request) {user in
 
             if user.error == nil {
-                print(user.message as Any)
-                
+               
                 if user.user != nil {
                 ShareReferences.shared.setUser(user: user.user!)
+                    
+                    self.userView?.signInSuccessful(message: "signin successful")
+                    self.userView?.apiCallback(response: user)
+                    self.userView?.navigation()
+       
                 }
-                if user.message != nil {
-                self.userView?.signInSuccessful(message: user.message!)
-                }
-                
-                self.userView?.apiCallback(response: user)
-                self.userView?.navigation()
-
+  
                 print("signinSuccesfulgogogo")
             }
             else{
-                
-                print(user.message)
+                if let errormessage = user.error?.message  {
+                     print("errormessage = \(errormessage)")
+                }
+               
 
             }
         }
@@ -61,14 +61,12 @@ class UserPresenter {
         userApi.onSignUp(request: request) {user in
 
             if user.error == nil {
-                print(user.message as Any)
+              
                 
                 if user.user != nil {
                     ShareReferences.shared.setUser(user: user.user!)
                 }
-                if user.message != nil {
-                    self.userView?.signUpSuccessful(message: user.message!)
-                }
+           
                 
                 self.userView?.apiCallback(response: user)
                 self.userView?.navigation()
@@ -77,30 +75,13 @@ class UserPresenter {
             }
             else{
                 
-                print(user.message)
+                print(user.error?.message)
                 
             }
         }
     }
     
-//    func getUserInfo(request : UserProfileRequest){
-//        userApi.getUserInfo(request: request) {user in
-//            
-//            if user.error == nil {
-//                print(user.message as Any)
-//
-//                self.userView?.apiCallback(response: user)
-//                self.userView?.navigation()
-//                
-//                print("signupSuccesfulgogogo")
-//            }
-//            else{
-//                
-//                print(user.message)
-//                
-//            }
-//        }
-//    }
+
     
 
     

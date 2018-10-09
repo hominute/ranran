@@ -12,10 +12,28 @@ import CoreImage
 import SwiftyJSON
 
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate, ChatView, UserinfoProtocol{
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate, ChatView, UserinfoProtocol, UserProfileProtocol{
+ 
+    
+
+    
+    func profileClickCallback(friendId: Int64, friendName: String, statusmessage: String) {
+        
+        self.friendName = friendName
+        self.statusmessage = statusmessage
+        self.friendId = friendId
+        
+        print("\(self.friendName)")
+        print("\(self.statusmessage)")
+        performSegue(withIdentifier: "chattoprofile", sender: self)
+        
+    }
     
     
-    
+    var friendId = Int64()
+    var friendName = String()
+    var statusmessage = String()
+
     var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
     var presenter : ChatPresenter?
     var keyboardShown:Bool = false // 키보드 상태 확인
@@ -53,8 +71,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             
         }
+        
+        if(segue.identifier == "chattoprofile") {
+            
+            let userProfileViewController = (segue.destination as! UserProfileViewController)
+            //            userProfileViewController.myName = "hoho"
+            userProfileViewController.friendName = self.friendName
+            userProfileViewController.statusmessage = self.statusmessage
+            userProfileViewController.friendId = self.friendId
+            userProfileViewController.chatProfile = true
+            
+            
+        }
     }
     
+    
+    
+
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -265,13 +298,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getOtherMessageCell (messageData: MessageData, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherTableViewCell", for: indexPath) as! OtherTableViewCell
-        cell.layer.backgroundColor = UIColor.clear.cgColor
-        cell.layer.borderWidth = 0
-        cell.layer.borderColor = UIColor.clear.cgColor
-        cell.message.layer.cornerRadius = cell.message.frame.size.height / 5
-        cell.message.layer.masksToBounds = true
+
         cell.message.text = messageData.message!
-        
         
         if messageData.createdDate != nil {
             
@@ -294,14 +322,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.message.sizeToFit()
         cell.message.numberOfLines = 0
         cell.delegte = self
+        cell.profilClickDelegate = self
+        cell.friendName = "friend userId = \(messageData.userId!)"
+        cell.statusMessage = "공사중샛갹"
         if let imageUrl = messageData.photo {
             
             
             cell.imageLoad(url: imageUrl)
         }
         //        cell.friendImage.sizeToFit()
-        cell.friendImage.layer.cornerRadius = cell.friendImage.frame.size.height / 2
-        cell.friendImage.layer.masksToBounds = true
         
         return cell
         
@@ -480,12 +509,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.inputTextfield.text = ""
     }
     
-    func apiCallback(response: BaseResponse) {
+    func apiCallback(response: ChatResponse) {
         
-        let message = (response as! ChatResponse).data?.content
+        let message = response.data?.content
         
-        presenter?.totalpages = (response as! ChatResponse).data?.totalPages
-        presenter?.totalMessages = (response as! ChatResponse).data?.totalElements
+        presenter?.totalpages = response.data?.totalPages
+        presenter?.totalMessages = response.data?.totalElements
         
         print("current list count = \(self.list.count)")
         

@@ -33,14 +33,12 @@ class SplashPresenter {
         splashApi.getEmergency() {response in
             
             if response.error == nil {
-                print(response.message as Any)
+    
                 
 //                if user.user != nil {
 ////                    ShareReferences.shared.setUser(user: user.user!)
 //                }
-                if response.message != nil {
-//                    self.userView?.signInSuccessful(message: user.message!)
-                }
+    
                 
 //                self.userView?.apiCallback(response: user)
                 self.splashView?.emergencyCallback(response: response)
@@ -50,7 +48,7 @@ class SplashPresenter {
             }
             else{
                 
-                print(response.message)
+                print(response.error?.message)
                 
             }
         }
@@ -60,15 +58,12 @@ class SplashPresenter {
         splashApi.getUpdate() {response in
             
             if response.error == nil {
-                print(response.message as Any)
+           
                 
 //                if user.user != nil {
 //                    ShareReferences.shared.setUser(user: user.user!)
 //                }
-                if response.message != nil {
-//                    self.userView?.signUpSuccessful(message: user.message!)
-                }
-                
+
 //                self.userView?.apiCallback(response: user)
 //                self.userView?.navigation()
                 
@@ -78,7 +73,7 @@ class SplashPresenter {
             }
             else{
                 
-                print(response.message)
+                print(response.error?.message)
                 
             }
         }
@@ -88,14 +83,12 @@ class SplashPresenter {
         splashApi.getForce() {response in
             
             if response.error == nil {
-                print(response.message as Any)
+ 
                 
 //                if user.user != nil {
 //                    ShareReferences.shared.setProfile(profile: user.user!)
 //                }
-                if response.message != nil {
-//                    self.userView?.signUpSuccessful(message: user.message!)
-                }
+
                 
 //                self.userView?.apiCallback(response: user)
 //                self.userView?.navigation()
@@ -105,7 +98,7 @@ class SplashPresenter {
             }
             else{
                 
-                print(response.message)
+                print(response.error?.message)
                 
             }
         }
@@ -115,14 +108,12 @@ class SplashPresenter {
         splashApi.getNotice() {response in
             
             if response.error == nil {
-                print(response.message as Any)
+         
                 
 //                if user.user != nil {
 //                    ShareReferences.shared.setProfile(profile: user.user!)
 //                }
-                if response.message != nil {
-//                    self.userView?.signUpSuccessful(message: user.message!)
-                }
+          
                 
 //                self.userView?.apiCallback(response: user)
 //                self.userView?.navigation()
@@ -132,7 +123,7 @@ class SplashPresenter {
             }
             else{
                 
-                print(response.message)
+                print(response.error?.message)
                 
             }
         }

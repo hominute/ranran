@@ -9,15 +9,13 @@
 import UIKit
 
 
-class ChatListTableViewController: UITableViewController, ChatView, ChatProtocol {
+class ChatListTableViewController: UITableViewController, ChatListView, ChatProtocol {
 
-    
-  
+
     var roomid : Int64?
 
-
-    
-     let presenter = ChatPresenter()
+ 
+     let presenter = ChatListPresenter()
     
     
      let heightOfheader : CGFloat = 44
@@ -34,7 +32,7 @@ class ChatListTableViewController: UITableViewController, ChatView, ChatProtocol
     
     override func viewWillAppear(_ animated: Bool) {
          self.tableView.reloadData()
-        presenter.attachChatView(view: self)
+        presenter.attachChatListView(view: self)
         getList()
         self.tableView.backgroundView = UIImageView(image: UIImage(named:"background"))
     }
@@ -181,11 +179,8 @@ class ChatListTableViewController: UITableViewController, ChatView, ChatProtocol
         
     }
     
-    func clearInputTextField() {
-        
-    }
-    
-    func apiCallback(response: BaseResponse) {
+
+    func apiCallback(response: RoomResponse) {
         let List = (response as! RoomResponse).data?.content
         
         self.list = List!
@@ -195,17 +190,12 @@ class ChatListTableViewController: UITableViewController, ChatView, ChatProtocol
         
     }
     
-    func moreMessageCallback(response: ChatResponse) {
-        
-    }
+
     
     func refreshRange() {
         
     }
-    
-    func addChat(chat: MessageData) {
-        
-    }
+
     
     func scrollToBottom() {
         

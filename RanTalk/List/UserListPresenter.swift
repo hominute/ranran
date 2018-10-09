@@ -135,7 +135,7 @@ class UserListPresenter {
                         
                     }else{
                 
-                        self.userListView?.displayMessage(message: response?.message as! String)
+                        self.userListView?.displayMessage(message: response?.error?.message as! String)
                     
                         print("getInvite error")
                     }
@@ -144,7 +144,7 @@ class UserListPresenter {
                     
                 }else{
                     
-                    print(response?.message)
+                    print(response?.error?.message)
                     
                 }
                 self.isInviting = false

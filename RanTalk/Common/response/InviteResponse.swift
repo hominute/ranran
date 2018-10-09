@@ -9,10 +9,9 @@
 import UIKit
 import ObjectMapper
 
-class InviteResponse: BaseResponse, Mappable {
+class InviteResponse: BaseResponse {
     
-    var message : String? = nil
-    var error : String?
+
     var data : Room?
 
     
@@ -20,14 +19,11 @@ class InviteResponse: BaseResponse, Mappable {
     required init?(map: Map) {
         
         
-        //    content = [MessageData]() as NSArray
-        
         
     }
     
-    func mapping(map: Map) {
-        self.message <- map["message"]
-        self.error <- map["error"]
+    override func mapping(map: Map) {
+
         self.data <- map["data"]
     }
     

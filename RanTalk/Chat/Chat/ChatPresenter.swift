@@ -47,6 +47,7 @@ class ChatPresenter: StompClientLibDelegate {
         self.roomId = roomId
     }
     
+    
     func attachChatView(view : ChatView) {
         
         self.chatView = view
@@ -57,32 +58,7 @@ class ChatPresenter: StompClientLibDelegate {
         self.chatView = nil
     }
     
-    
-    func getRoom(request : RoomRequest){
-        userApi.getRoom(request: request) { (response, error) in
-            
-            if error == nil {
-                
-                
-                print(response)
-                
-                if response?.error == nil {
-                    self.chatView?.apiCallback(response: response!)
-                    self.chatView?.refresh()
-                    
-                }
-                
-                print("signinSuccesfulgogogo")
-            }
-            else{
-                
-                print(response?.message)
-                
-            }
-            
-        }
-    }
-    
+  
     
     func getMessage() {
         if isLoading == false {

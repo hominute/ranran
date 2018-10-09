@@ -12,6 +12,11 @@ import Kingfisher
 class OtherTableViewCell: MessageTableViewCell {
 
     var userId = Int64()
+    var profilClickDelegate : UserProfileProtocol?
+    var delegte : UserinfoProtocol?
+    var friendName = String()
+    var statusMessage = String()
+    var friendId = Int64()
     
     @IBOutlet var message: UILabel!
     
@@ -24,11 +29,11 @@ class OtherTableViewCell: MessageTableViewCell {
     @IBAction func friendInfo(_ sender: Any) {
         
         
-        self.delegte?.UserinfoCallback(userId: userId)
+        self.profilClickDelegate?.profileClickCallback(friendId: friendId ,friendName: friendName, statusmessage: statusMessage)
         
         
     }
-    var delegte : UserinfoProtocol?
+   
     
     func imageLoad(url: String) {
         let url = URL(string: url)
@@ -44,6 +49,16 @@ class OtherTableViewCell: MessageTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.layer.backgroundColor = UIColor.clear.cgColor
+        self.layer.borderWidth = 0
+        self.layer.borderColor = UIColor.clear.cgColor
+        message.layer.cornerRadius = message.frame.size.height / 5
+        message.layer.masksToBounds = true
+        
+        
+        friendImage.layer.cornerRadius = friendImage.frame.size.height / 2
+        friendImage.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

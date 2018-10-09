@@ -11,20 +11,16 @@ import Foundation
 import UIKit
 import ObjectMapper
 
-class ProfileResponse: BaseResponse, Mappable {
-    
-    var message : String? = nil
-    var error : String?
+class ProfileResponse: BaseResponse {
+
     var user : Profile?
 
     required init?(map: Map) {
-        
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         self.user <- map["data"]
-        self.message <- map["message"]
-        self.error <- map["error"]
+
       
     }
     

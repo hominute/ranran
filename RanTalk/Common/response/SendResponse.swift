@@ -9,24 +9,15 @@
 import UIKit
 import ObjectMapper
 
-struct SendResponse: Mappable {
-    
-    var message : String? = nil
-    var error : String?
+class SendResponse: BaseResponse {
 
-    
-    
-    init?(map: Map) {
+   required init?(map: Map) {
         
-        
-        //    content = [MessageData]() as NSArray
-        
-        
+
     }
     
-    mutating func mapping(map: Map) {
-        self.message <- map["message"]
-        self.error <- map["error"]
+    override func mapping(map: Map) {
+   
     
     }
     

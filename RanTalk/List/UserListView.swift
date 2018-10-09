@@ -10,7 +10,7 @@ import Foundation
 
 protocol UserListView {
 
-    func apiCallback(response: BaseResponse)
+    func apiCallback(response: UserListResponse)
     func inviteApiCallback(response: InviteResponse)
     func setTitle(title: String)
     func displayMessage(message: String)

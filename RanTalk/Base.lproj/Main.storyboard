@@ -674,7 +674,9 @@
                         <viewLayoutGuide key="safeArea" id="DVn-C5-Gz7"/>
                     </view>
                     <connections>
-                        <outlet property="banView" destination="yfY-jS-qc2" id="0Aj-dg-usE"/>
+                        <outlet property="banButtonView" destination="yfY-jS-qc2" id="r2c-Ch-22a"/>
+                        <outlet property="chatButtonView" destination="B9M-xl-OvD" id="KkB-C1-UzM"/>
+                        <outlet property="giftButtonView" destination="xRZ-CO-6El" id="W9d-BQ-Ech"/>
                         <outlet property="profileImage" destination="N6Y-3b-Pln" id="sGM-h1-Czk"/>
                         <outlet property="statusMessage" destination="9wt-tY-Dan" id="ywu-Wr-9zU"/>
                         <outlet property="userInfo" destination="d1G-cW-kKo" id="B6p-Vs-85J"/>
@@ -1168,7 +1170,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="rd0-vD-Kcm"/>
         <segue reference="FWT-OB-jkI"/>
-        <segue reference="7F7-8p-WT6"/>
+        <segue reference="Tkc-PR-7BT"/>
         <segue reference="PWx-lP-RPC"/>
     </inferredMetricsTieBreakers>
 </document>

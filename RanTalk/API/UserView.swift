@@ -18,7 +18,7 @@ protocol UserView : NSObjectProtocol {
     func signUpSuccessful(message : String)
     func errorOccurred(message : String)
     func apiCallback()
-    func apiCallback(response: BaseResponse)
+    func apiCallback(response: UserResponse)
 
     
 }

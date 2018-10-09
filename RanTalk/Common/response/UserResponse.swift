@@ -9,26 +9,20 @@
 import UIKit
 import ObjectMapper
 
-class UserResponse: BaseResponse, Mappable {
+class UserResponse: BaseResponse{
     
-    var message : String? = nil
-    var error : String?
+
     var user : User?
-    var id : Int64?
-    var email : String?
-    var name : String?
+
+
     
-   required init?(map: Map) {
-        
+    required init?(map: Map) {
+
     }
     
-    func mapping(map: Map) {
+   override func mapping(map: Map) {
+        super.mapping(map: map)
         self.user <- map["data"]
-        self.message <- map["message"]
-        self.error <- map["error"]
-        self.id <- map["id"]
-        self.email <- map["email"]
-        self.name <- map["name"]
     }
     
     

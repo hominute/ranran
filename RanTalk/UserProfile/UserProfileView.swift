@@ -11,6 +11,7 @@ import Foundation
 protocol UserProfileView {
     
     func apiCallback(response: UserProfileResponse)
+    func favoriteCallback(response: FavoriteResponse)
     func navigation()
     
 }

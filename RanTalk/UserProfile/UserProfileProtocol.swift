@@ -7,7 +7,7 @@
 //
 
 public protocol UserProfileProtocol {
-    func profileClickCallback(friendName : String, statusmessage : String)
+    func profileClickCallback(friendId : Int64, friendName : String, statusmessage : String)
     
 }
 

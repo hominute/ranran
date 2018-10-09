@@ -180,7 +180,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    func apiCallback(response: BaseResponse) {
+    func apiCallback(response: UserResponse) {
         
 //        performSegue(withIdentifier: "backtosignin", sender: self)
        

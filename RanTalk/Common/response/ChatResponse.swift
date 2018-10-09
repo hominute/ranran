@@ -9,10 +9,8 @@
 import UIKit
 import ObjectMapper
 
-class ChatResponse: BaseResponse, Mappable {
-    
-    var message : String? = nil
-    var error : String?
+class ChatResponse: BaseResponse {
+
     var user : User?
     var data : MyData<MessageData>?
     var userId : Int64?
@@ -22,13 +20,11 @@ class ChatResponse: BaseResponse, Mappable {
     
     required init?(map: Map) {
     
-        
+
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         self.user <- map["user"]
-        self.message <- map["message"]
-        self.error <- map["error"]
         self.data <- map["data"]
         self.userId <- map["userId"]
         self.hoho <- map["hoho"]
