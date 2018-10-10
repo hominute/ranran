@@ -13,7 +13,7 @@ class UserListPresenter {
     
     private var userApi = UserAPI()
     
-    private var userListView : UserListView?
+    private var view : UserListView?
     
     let uds = UserDefaults.standard
     
@@ -21,12 +21,12 @@ class UserListPresenter {
     
     func attachlistView(view : UserListView) {
         
-        self.userListView = view
+        self.view = view
     }
     
     func detachView() {
         
-        self.userListView = nil
+        self.view = nil
     }
     
     func getTitle(){
@@ -37,7 +37,7 @@ class UserListPresenter {
             
             name = "AppTest"
         }
-        self.userListView?.setTitle(title: name!)
+        self.view?.setTitle(title: name!)
     }
     
     func logout(){
@@ -64,7 +64,7 @@ class UserListPresenter {
             if content.error == nil {
                 
                 
-                self.userListView?.apiCallback(response: content)
+                self.view?.apiCallback(response: content)
                 
             }
             else{
@@ -84,7 +84,7 @@ class UserListPresenter {
             if content.error == nil {
                 
                 
-                self.userListView?.favoriteApiCallback(response: content)
+                self.view?.favoriteApiCallback(response: content)
                 
             }
             else{
@@ -106,7 +106,7 @@ class UserListPresenter {
             if content.error == nil {
                 
                 
-                self.userListView?.mylistApiCallback(response: content)
+                self.view?.mylistApiCallback(response: content)
                 
             }
             else{
@@ -130,12 +130,12 @@ class UserListPresenter {
                     print(response)
                     
                     if response?.error != nil {
-                        self.userListView?.inviteApiCallback(response: response!)
+                        self.view?.inviteApiCallback(response: response!)
                         
                         
                     }else{
                 
-                        self.userListView?.displayMessage(message: response?.error?.message as! String)
+                        self.view?.displayMessage(message: response?.error?.message as! String)
                     
                         print("getInvite error")
                     }

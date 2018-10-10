@@ -8,15 +8,20 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UserView{
-    func apiCallback(response: UserResponse) {
-        
-    }
+protocol ProfileSettingProtocol {
+    
+    func apiCallback(response: BaseResponse)
+    
+}
+
+
+class ProfileSettingView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate{
+
     
 
     var userId = Int64()
 
-    let presenter  = UserPresenter(userApi : UserAPI() )
+    let presenter  = ProfileSettingPresenter()
     let titles = ["asdd", "dddddasd", "asd", "dssd", "asdddddddddd"]
     
 
@@ -72,10 +77,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
-        
+     
         collectionView.delegate = self
         collectionView.dataSource = self
         tableView.delegate = self
@@ -276,55 +278,36 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     
-    func startLoading() {
-        
-    }
+
+
+
+
+}
+
+
+extension ProfileSettingView : ProfileSettingProtocol {
     
-    func stopLoading() {
-        
-    }
     
-    func navigation() {
-        
-    }
-    
-    func signInSuccessful(message: String) {
-        
-    }
-    
-    func signUpSuccessful(message: String) {
-        
-    }
-    
-    func errorOccurred(message: String) {
-        
-    }
-    
-    func apiCallback() {
-        
-    }
     
     func apiCallback(response: BaseResponse) {
         let userinfo = (response as! ProfileResponse).user!
-  
+        
         var md = value
         
         md[0] = "\(userinfo.email!)"
         md[1] = "\(userinfo.name!)"
         md[2] = "\(userinfo.point!)"
         if userinfo.statusmessage != nil {
-        md[3] = "\(userinfo.statusmessage!)"
+            md[3] = "\(userinfo.statusmessage!)"
         }else {
             
             md[3] = "상태메시지를 입력하세요"
         }
         md[4] = "\(userinfo.photo!)"
-
+        
         self.value = md
         print("uservalue -   \(self.value)")
         tableView.reloadData()
         collectionView.reloadData()
     }
-
-
 }

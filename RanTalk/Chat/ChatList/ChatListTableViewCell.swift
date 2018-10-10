@@ -16,9 +16,7 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet var userName: UILabel!
     
     
-    @IBOutlet var testuserId: UILabel!
-    
-    @IBOutlet var testroomId: UILabel!
+
     
     var roomId = Int64()
     var friendInfo : List?

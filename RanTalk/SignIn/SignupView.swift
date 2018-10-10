@@ -8,17 +8,32 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserView, UIPickerViewDelegate, UIPickerViewDataSource{
+
+protocol SignupProtocol {
+    
+    func startLoading()
+    func stopLoading()
+    func navigation()
+    func signUpSuccessful(message : String)
+    func errorOccurred(message : String)
+    func apiCallback()
+    func apiCallback(response: UserResponse)
+    
+    
+}
+
+
+class SignupView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UIPickerViewDelegate, UIPickerViewDataSource{
 
     
-    @IBOutlet var testlabel: UILabel!
+
     
     
     var sexOption = ["남자","여자"]
     var pickerView = UIPickerView()
     @IBOutlet var signupView: UIView!
     
-    let presenter  = UserPresenter(userApi : UserAPI() )
+    let presenter  = SignupPresenter()
     
     
     @IBAction func userPhoto(_ sender: Any) {
@@ -82,7 +97,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.showsSelectionIndicator = true
-        testlabel.text = "wasdf"
+    
         
         
         
@@ -95,9 +110,10 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(donebuttonpressed))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(cancelbuttonpressed))
-        let labelbutton = UIBarButtonItem(customView: testlabel)
-        ///asdfasdf
-        let asd = "asdf"
+       
+        let testlabel = UILabel()
+        testlabel.text = "성별"
+         let labelbutton = UIBarButtonItem(customView: testlabel)
         toolBar.setItems([cancelButton,spaceButton ,labelbutton,spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         sex.inputAccessoryView = toolBar
@@ -152,40 +168,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
   
     //Picker View delegate end
     
-    func startLoading() {
-        
-    }
-    
-    func stopLoading() {
-        
-    }
-    
-    func navigation() {
-        
-    }
-    
-    func signInSuccessful(message: String) {
-        
-    }
-    
-    func signUpSuccessful(message: String) {
-        
-    }
-    
-    func errorOccurred(message: String) {
-        
-    }
-    
-    func apiCallback() {
-        
-    }
-    
-    func apiCallback(response: UserResponse) {
-        
-//        performSegue(withIdentifier: "backtosignin", sender: self)
-       
-    }
-    
+  
     
 
     
@@ -230,7 +213,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                     print("Ok button tapped")
                     DispatchQueue.main.async
                         {
-                            //                            self.dismiss(animated: true, completion: nil)
+                       
                     }
                 }
                 
@@ -263,4 +246,40 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 //Utility Func End
 
 
+}
+
+
+extension SignupView : SignupProtocol{
+    
+    
+    func startLoading() {
+        
+    }
+    
+    func stopLoading() {
+        
+    }
+    
+    func navigation() {
+        
+    }
+    
+    func signUpSuccessful(message: String) {
+        
+    }
+    
+    func errorOccurred(message: String) {
+        
+    }
+    
+    func apiCallback() {
+        
+    }
+    
+    func apiCallback(response: UserResponse) {
+        
+        
+        
+    }
+    
 }

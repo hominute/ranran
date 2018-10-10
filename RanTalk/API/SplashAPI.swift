@@ -16,7 +16,7 @@ class SplashAPI {
     
     func getEmergency( callBack : @escaping (SplashResponse) -> Void){
 
-        Alamofire.request(API.EMERGENCY, method: .get, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.EMERGENCY, method: .get, headers: [:]).responseObject {
             (response: DataResponse<SplashResponse>)  in
             let data = response.data
             //            print("fullresponse = \(fullresponse)")
@@ -43,7 +43,7 @@ class SplashAPI {
         
         
       
-        Alamofire.request(API.UPDATE, method: .get, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.UPDATE, method: .get, headers: [:]).responseObject {
             (response: DataResponse<SplashResponse>)  in
             let data = response.data
             //            print("fullresponse = \(fullresponse)")
@@ -70,7 +70,7 @@ class SplashAPI {
         
         
       
-        Alamofire.request(API.FORCE, method: .get, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.FORCE, method: .get, headers: [:]).responseObject {
             (response: DataResponse<SplashResponse>)  in
             let data = response.data
             //            print("fullresponse = \(fullresponse)")
@@ -97,7 +97,7 @@ class SplashAPI {
         
         
         
-        Alamofire.request(API.NOTICE, method: .get, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.NOTICE, method: .get, headers: [:]).responseObject {
             (response: DataResponse<SplashResponse>)  in
             let data = response.data
             //            print("fullresponse = \(fullresponse)")

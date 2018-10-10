@@ -18,7 +18,7 @@ class UserTableViewCell: UserListTableViewCell{
     var friendName = String()
     var statusmessage = String()
     var inviteClickDelegate: InviteProtocol?
-    var profilClickDelegate : UserProfileProtocol?
+    var profilClickDelegate : UserProfileProtocols?
     
     @IBOutlet var userImage: UIImageView!
     

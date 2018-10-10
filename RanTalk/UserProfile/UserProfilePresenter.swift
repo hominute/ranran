@@ -13,17 +13,17 @@ class UserProfilePresenter {
     
     
     private let userApi = UserAPI()
-    private var userProfileView : UserProfileView?
+    private var view : UserProfileView?
     
     var isfavoriting = false
     
     func attachView(view : UserProfileView){
-        self.userProfileView = view
+        self.view = view
     }
     
     
     func detachView(){
-        self.userProfileView = nil
+        self.view = nil
     }
     
     
@@ -36,8 +36,8 @@ class UserProfilePresenter {
                 if user.error == nil {
                  
     
-                    self.userProfileView?.favoriteCallback(response: user)
-                    self.userProfileView?.navigation()
+                    self.view?.favoriteCallback(response: user)
+                    self.view?.navigation()
     
                     print("signupSuccesfulgogogo")
                 }
@@ -54,26 +54,6 @@ class UserProfilePresenter {
         }
     }
     
-   
-//    func getUserInfo(request : UserProfileRequest){
-//        userApi.getUserInfo(request: request) {user in
-//        
-//            if user.error == nil {
-//                print(user.message as Any)
-//                
-//                self.userProfileView?.apiCallback(response: user)
-//                self.userProfileView?.navigation()
-//                
-//                print("signupSuccesfulgogogo")
-//            }
-//            else{
-//                
-//                print(user.message)
-//                
-//            }
-//        }
-//    }
-    
-    
+
     
 }

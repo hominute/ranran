@@ -26,7 +26,7 @@ class ChatPresenter: StompClientLibDelegate {
     
     private var userApi = UserAPI()
     
-    private var chatView : ChatView?
+    private var view : ChatView?
     
     let uds = UserDefaults.standard
     var page = 0
@@ -50,12 +50,12 @@ class ChatPresenter: StompClientLibDelegate {
     
     func attachChatView(view : ChatView) {
         
-        self.chatView = view
+        self.view = view
     }
     
     func detachView() {
         self.socketClient.disconnect()
-        self.chatView = nil
+        self.view = nil
     }
     
   
@@ -79,14 +79,14 @@ class ChatPresenter: StompClientLibDelegate {
                     
             
                     if self.page == 0 {
-                        self.chatView?.apiCallback(response: response)
-                        self.chatView?.refresh()
+                        self.view?.apiCallback(response: response)
+                        self.view?.refresh()
                         self.socketConnect()
-                        self.chatView?.scrollToBottom()
+                        self.view?.scrollToBottom()
                         
                     } else {
-                        self.chatView?.moreMessageCallback(response: response)
-                        self.chatView?.refreshRange()
+                        self.view?.moreMessageCallback(response: response)
+                        self.view?.refreshRange()
                     }
                     
                 }
@@ -115,7 +115,7 @@ class ChatPresenter: StompClientLibDelegate {
             let userId = uds.integer(forKey: "userId")
             let chat = ["message" : chat! , "roomId" : roomId! , "userId" : userId] as [String : Any]
             self.socketClient.sendJSONForDict(dict: chat as AnyObject, toDestination: "/publish/chats")
-            self.chatView?.clearInputTextField()
+            self.view?.clearInputTextField()
             
             print("roomId = \(roomIds!)")
             print("userId = \(userId)")
@@ -199,7 +199,7 @@ class ChatPresenter: StompClientLibDelegate {
             md.chatType = md.userId == Int64(loginuserId) ? "MY" : "OTHER"
             //
             
-            self.chatView?.addChat(chat: md)
+            self.view?.addChat(chat: md)
             
             
         }catch{

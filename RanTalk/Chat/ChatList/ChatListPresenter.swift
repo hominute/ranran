@@ -15,7 +15,7 @@ class ChatListPresenter {
     
     private var userApi = UserAPI()
     
-    private var chatListView : ChatListView?
+    private var view : ChatListView?
     
     let uds = UserDefaults.standard
     var page = 0
@@ -38,12 +38,12 @@ class ChatListPresenter {
     
     func attachChatListView(view : ChatListView) {
         
-        self.chatListView = view
+        self.view = view
     }
     
     func detachView() {
 
-        self.chatListView = nil
+        self.view = nil
     }
     
     
@@ -56,8 +56,8 @@ class ChatListPresenter {
                 print(response)
                 
                 if response?.error == nil {
-                    self.chatListView?.apiCallback(response: response!)
-                    self.chatListView?.refresh()
+                    self.view?.apiCallback(response: response!)
+                    self.view?.refresh()
                     
                 }
                 

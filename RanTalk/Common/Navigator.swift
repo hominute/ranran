@@ -30,7 +30,7 @@ class Navigator: NSObject {
 
     
     static func onMoveToList(view : UITableViewController){
-        let vc: UITableViewController? = view.storyboard?.instantiateViewController(withIdentifier: "ListTable") as! ChatListTableViewController
+        let vc: UITableViewController? = view.storyboard?.instantiateViewController(withIdentifier: "ListTable") as! ChatListView
         if let aVc = vc {
             view.navigationController?.pushViewController(aVc, animated: true)
         }

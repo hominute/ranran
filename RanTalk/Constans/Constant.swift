@@ -1,16 +1,16 @@
 //
-//  API.swift
+//  Constant.swift
 //  RanTalk
 //
-//  Created by KIM HO MIN on 9/10/18.
+//  Created by KIM HO MIN on 10/11/18.
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class API: NSObject {
+struct APIConstant {
     
-   
+    
     
     static let ROOT = "https://dry-eyrie-61502.herokuapp.com"
     static let SIGNIN = ROOT+"/users/login"
@@ -30,4 +30,3 @@ class API: NSObject {
     
     
 }
-

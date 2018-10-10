@@ -6,7 +6,7 @@
 //  Copyright © 2018 HOTOSoft. All rights reserved.
 //
 
-public protocol UserProfileProtocol {
+public protocol UserProfileProtocols {
     func profileClickCallback(friendId : Int64, friendName : String, statusmessage : String)
     
 }

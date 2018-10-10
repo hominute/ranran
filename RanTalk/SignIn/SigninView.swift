@@ -11,8 +11,25 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-class SigninViewController: UIViewController {
+
+protocol SigninProtocol {
     
+    func startLoading()
+    func stopLoading()
+    func navigation()
+    func signInSuccessful(message : String)
+    
+    func errorOccurred(message : String)
+    func apiCallback()
+    func apiCallback(response: UserResponse)
+    
+    
+}
+
+
+
+class SigninView: UIViewController {
+    let presenter  = SigninPresenter()
     
     @IBOutlet var SigninView: UIView!
     
@@ -31,7 +48,7 @@ class SigninViewController: UIViewController {
     }
     
     
-    let presenter  = UserPresenter(userApi : UserAPI() )
+    
    
     @IBAction func testButton(_ sender: Any) {
         self.performSegue(withIdentifier: "logined", sender: self)
@@ -112,9 +129,7 @@ class SigninViewController: UIViewController {
         
         presenter.attachView(view: self)
         self.hideKeyboardWhenTappedAround(view: SigninView)
-//        presenter.attachView(view: self as! UserView)
-        
-//        delegatess = self as? ResponseProtocol
+
       
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -144,7 +159,7 @@ class SigninViewController: UIViewController {
     
 }
 
-extension SigninViewController : UserView {
+extension SigninView : SigninProtocol {
  
     
     func apiCallback(response: UserResponse) {
@@ -192,12 +207,7 @@ extension SigninViewController : UserView {
     }
     
     
-    func signUpSuccessful(message: String) {
-        print(message)
-        
-        
-//        dialog(message: message, error: false)
-    }
+
     
     func errorOccurred(message: String) {
         print(message)

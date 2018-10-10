@@ -12,7 +12,7 @@ import Kingfisher
 class OtherTableViewCell: MessageTableViewCell {
 
     var userId = Int64()
-    var profilClickDelegate : UserProfileProtocol?
+    var profilClickDelegate : UserProfileProtocols?
     var delegte : UserinfoProtocol?
     var friendName = String()
     var statusMessage = String()

@@ -18,7 +18,7 @@ class UserAPI {
     func onSignIn(request : UserRequest, callBack : @escaping (UserResponse) -> Void){
         
         let parameters  : Parameters =  ["email" : request.email! , "password" : request.password!]
-        Alamofire.request(API.SIGNIN, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.SIGNIN, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<UserResponse>)  in
             let data = response.data
 //            print("fullresponse = \(fullresponse)")
@@ -46,7 +46,7 @@ class UserAPI {
         
         let parameters  : Parameters =  [ "email" : request.email! ,"name" : request.name! , "password" : request.password!]
         
-        Alamofire.request(API.SIGNUP, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.SIGNUP, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<UserResponse>)  in
             
             let data = response.data
@@ -70,7 +70,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
         
-        Alamofire.request(API.LIST, method: .get , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.LIST, method: .get , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<UserListResponse>)  in
             
             let data = response.data
@@ -97,7 +97,7 @@ class UserAPI {
     
     func getUserInfo(userId : Int64, callBack : @escaping (UserProfileResponse) -> Void){
  
-        let url = API.USERINFO + "/\(userId)"
+        let url = APIConstant.USERINFO + "/\(userId)"
   
         Alamofire.request(url, method: .get).responseObject {
             (response: DataResponse<UserProfileResponse>)  in
@@ -124,7 +124,7 @@ class UserAPI {
     
     func getFavoriteList(userId : Int64 , callBack : @escaping  (UserListResponse) -> Void) {
         
-        let url = API.FAVORITE + "/\(userId)"
+        let url = APIConstant.FAVORITE + "/\(userId)"
         
         Alamofire.request(url, method: .get ).responseObject {
             (response: DataResponse<UserListResponse>)  in
@@ -153,7 +153,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["userId" : request.userId! , "friendId" : request.friendId! ]
         
-        Alamofire.request(API.FAVORITE, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.FAVORITE, method: .post , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<FavoriteResponse>)  in
             
             let data = response.data
@@ -181,7 +181,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["userId" : request.userId! , "friendId" : request.friendId! ]
         
-        Alamofire.request(API.FAVORITE, method: .delete , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.FAVORITE, method: .delete , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<FavoriteResponse>)  in
             
             let data = response.data
@@ -209,7 +209,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["friendId" : request.friendId! , "userId" : request.userId!]
         
-        Alamofire.request(API.INVITE, method: .post , parameters : parameters  , encoding : JSONEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.INVITE, method: .post , parameters : parameters  , encoding : JSONEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<InviteResponse>)  in
             
             let data = response.data
@@ -237,7 +237,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["userId" : request.userId! , "page" : request.page! , "size" : request.size!]
         
-        Alamofire.request(API.ROOM, method: .get , parameters : parameters  , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.ROOM, method: .get , parameters : parameters  , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<RoomResponse>)  in
             
             let data = response.data
@@ -265,7 +265,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["roomId" : request.roomId! , "userId" : request.userId! , "page" : request.page! , "size" : request.size!]
         
-        Alamofire.request(API.CHAT, method: .get , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.CHAT, method: .get , parameters : parameters , encoding : URLEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<ChatResponse>)  in
             
             let data = response.data
@@ -292,7 +292,7 @@ class UserAPI {
         
         let parameters  : Parameters =  ["message" : request.message! , "roomId" : request.roomId! , "userId" : request.userId!]
         
-        Alamofire.request(API.CHAT, method: .post , parameters : parameters  , encoding : JSONEncoding.default, headers: [:]).responseObject {
+        Alamofire.request(APIConstant.CHAT, method: .post , parameters : parameters  , encoding : JSONEncoding.default, headers: [:]).responseObject {
             (response: DataResponse<SendResponse>)  in
             
             let data = response.data
