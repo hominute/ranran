@@ -192,8 +192,8 @@ class ProfileSettingView: UIViewController, UICollectionViewDataSource, UICollec
     
     
     
-    lazy var list: [MessageData] = {
-        var datalist = [MessageData]()
+    lazy var list: [Message] = {
+        var datalist = [Message]()
         
         return datalist
         

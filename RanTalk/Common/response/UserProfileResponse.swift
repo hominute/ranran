@@ -13,7 +13,7 @@ class UserProfileResponse:  BaseResponse {
     
 
     var user : User?
-    var data : List?
+    var data : UserList?
     var userId : Int64?
 
     

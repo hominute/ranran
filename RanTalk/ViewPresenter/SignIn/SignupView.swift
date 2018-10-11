@@ -26,9 +26,6 @@ protocol SignupProtocol {
 class SignupView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UIPickerViewDelegate, UIPickerViewDataSource{
 
     
-
-    
-    
     var sexOption = ["남자","여자"]
     var pickerView = UIPickerView()
     @IBOutlet var signupView: UIView!
@@ -64,13 +61,13 @@ class SignupView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             (regEmail.text?.isEmpty)!
             
         {
-            displayMessage(userMessage: "다채워 쫌 ㅂㅅ아")
+            self.displayMessage(message: "다채워 쫌 ㅂㅅ아")
             return
         }
         
         if ((regPass.text?.elementsEqual(regrePass.text!))! != true)
         {
-            displayMessage(userMessage: "암호가 일치하지 않습니다.")
+            self.displayMessage(message: "암호가 일치하지 않습니다.")
             return
         }
         
@@ -204,24 +201,6 @@ class SignupView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
 
-    func displayMessage(userMessage:String) -> Void {
-        DispatchQueue.main.async
-            {
-                let alertController = UIAlertController(title:"Alert", message: userMessage, preferredStyle:.alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                    
-                    print("Ok button tapped")
-                    DispatchQueue.main.async
-                        {
-                       
-                    }
-                }
-                
-                alertController.addAction(OKAction)
-                self.present(alertController, animated: true, completion: nil)
-
-        }
-    }
     
     
     @objc func handleTextInputChange(){

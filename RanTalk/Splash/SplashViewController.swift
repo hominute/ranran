@@ -14,7 +14,7 @@ class SplashViewController: UIViewController,SplashView {
         
        
         
-        self.displayMessage(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
+        self.displayMessageWithClosure(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
             () -> Void in
             
             self.presenter.getForce()
@@ -28,7 +28,7 @@ class SplashViewController: UIViewController,SplashView {
         //popup notice 공지사항
         
         
-        self.displayMessage(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
+        self.displayMessageWithClosure(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
             () -> Void in
             
             self.presenter.getNotice()
@@ -41,7 +41,7 @@ class SplashViewController: UIViewController,SplashView {
         //popup update 선택앱업데이트
         
        
-        self.displayMessage(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
+        self.displayMessageWithClosure(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
             () -> Void in
             
             self.presenter.getUpdate()
@@ -52,7 +52,7 @@ class SplashViewController: UIViewController,SplashView {
     
     func noticeCallback(response: SplashResponse) {
         
-        self.displayMessage(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
+        self.displayMessageWithClosure(title: (response.data?.title)!, userMessage: (response.data?.description)!, completion: {
             () -> Void in
             
             let uds = UserDefaults.standard
@@ -106,23 +106,23 @@ class SplashViewController: UIViewController,SplashView {
     }
     */
     
-    func displayMessage(title: String, userMessage:String, completion: @escaping () -> Void) -> Void {
-        DispatchQueue.main.async
-            {
-                let alertController = UIAlertController(title:title, message: userMessage, preferredStyle:.alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                    
-                    print("Ok button tapped")
-                    
-                    completion()
-                  
-                }
-                
-                alertController.addAction(OKAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-                
-        }
-    }
+//    func displayMessageWithClosure(title: String, userMessage:String, completion: @escaping () -> Void) -> Void {
+//        DispatchQueue.main.async
+//            {
+//                let alertController = UIAlertController(title:title, message: userMessage, preferredStyle:.alert)
+//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+//                    
+//                    print("Ok button tapped")
+//                    
+//                    completion()
+//                  
+//                }
+//                
+//                alertController.addAction(OKAction)
+//                self.present(alertController, animated: true, completion: nil)
+//                
+//                
+//        }
+//    }
 
 }

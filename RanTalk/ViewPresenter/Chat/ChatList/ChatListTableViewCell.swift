@@ -19,7 +19,7 @@ class ChatListTableViewCell: UITableViewCell {
 
     
     var roomId = Int64()
-    var friendInfo : List?
+    var friendInfo : UserList?
     
     var delegte : ChatProtocol?
     
@@ -43,6 +43,14 @@ class ChatListTableViewCell: UITableViewCell {
         customview.backgroundColor = UIColor.rgba(red: 138, green: 176, blue: 240, alpha: 0.5)
         self.selectedBackgroundView = customview
         userImage?.layer.cornerRadius = userImage.bounds.width * 0.5
+    }
+    
+    
+    func setupCell(room: Room) {
+        
+        //        self.repoNameLabel.text = repo.title ?? "..."
+        //        self.repoDescriptionLabel.text = repo.description ?? "..."
+        //        self.ownerLabel.text = "By " + (repo.owner?.username ?? "...")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -12,7 +12,7 @@ import ObjectMapper
 struct Room : Mappable {
     
     var roomId : Int64?
-    var friendInfo : List?
+    var friendInfo : UserList?
     var lastchat : String?
     
     

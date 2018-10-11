@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class MessageData: Mappable {
+class Message: Mappable {
     
     
     var chatType : String?
@@ -35,6 +35,9 @@ class MessageData: Mappable {
         self.message <- map["message"]
         self.createdDate <- map["createdDate"]
         self.photo <- map["photo"]
+        
+       
     }
 }
+
 

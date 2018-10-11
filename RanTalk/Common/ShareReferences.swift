@@ -39,14 +39,14 @@ class ShareReferences: NSObject {
     }
     
    
-    var list = List()
+    var list = UserList()
     
-    func setList (list : List){
+    func setList (list : UserList){
         
         self.list = list
         
     }
-    func getList() -> List {
+    func getList() -> UserList {
         
         return list
     }

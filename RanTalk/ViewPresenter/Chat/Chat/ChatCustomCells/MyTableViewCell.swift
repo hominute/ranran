@@ -19,6 +19,13 @@ class MyTableViewCell: MessageTableViewCell {
         // Initialization code
         
     }
+    
+    func setupCell(message: Message) {
+        
+        //        self.repoNameLabel.text = repo.title ?? "..."
+        //        self.repoDescriptionLabel.text = repo.description ?? "..."
+        //        self.ownerLabel.text = "By " + (repo.owner?.username ?? "...")
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

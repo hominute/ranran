@@ -62,6 +62,18 @@ class UserTableViewCell: UserListTableViewCell{
         
     }
 
+    
+    func setupCell(userlist: UserList) {
+        imageLoad(imageUrl: userlist.photo ?? "")
+        self.shortMessage.text = userlist.statusMessge ?? ""
+        self.userName.text = userlist.name ?? ""
+        self.friendId = userlist.id ?? 0
+        self.friendName = userlist.name ?? ""
+        self.statusmessage = userlist.statusMessge ?? ""
+    }
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
      

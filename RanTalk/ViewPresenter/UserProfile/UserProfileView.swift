@@ -17,7 +17,7 @@ protocol UserProfileProtocol {
 }
 
 class UserProfileView: UIViewController {
-
+    
     var myProfile = false
     var chatProfile = false
     
@@ -31,12 +31,14 @@ class UserProfileView: UIViewController {
     var favorite = false
     var friendId = Int64()
     
+    
     @IBOutlet var chatButtonView: UIView!
     
     @IBOutlet var giftButtonView: UIView!
     
     @IBOutlet var banButtonView: UIView!
-
+    
+    @IBOutlet var MyprofileButtonView: UIView!
     
     @IBOutlet var profileImage: UIImageView!
     
@@ -58,9 +60,13 @@ class UserProfileView: UIViewController {
         print("ban button tapped")
     }
     
+    @IBAction func myprofile(_ sender: Any) {
+        
+        print("myprofile button tapped")
+    }
     
     @IBAction func favorite(_ sender: Any) {
-      
+        
         if favorite == false {
             let loginId = self.uds.integer(forKey: "userId")
             
@@ -80,7 +86,7 @@ class UserProfileView: UIViewController {
             print("favorite false")
             return
         }
-            
+        
         
         
         print("favorite button tapped")
@@ -108,45 +114,52 @@ class UserProfileView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.attachView(view: self)
-        if self.friendName != "" {
-        self.userName.text = self.friendName
-        }
-        if self.myName != "" {
-            
-            self.userName.text = self.myName
-        }
-     
-        self.statusMessage.text = self.statusmessage
-        
-        profileImage.layer.cornerRadius = profileImage.bounds.width * 0.5
         
         
+        viewSetup()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    func viewSetup() {
         let uds = UserDefaults.standard
         
         let loginId = uds.integer(forKey: "userId")
+        
+        profileImage.layer.cornerRadius = profileImage.bounds.width * 0.5
+        
+        self.MyprofileButtonView.isHidden = true
+        
         
         if friendId == Int64(loginId) {
             
             self.chatButtonView.isHidden = true
             self.banButtonView.isHidden = true
+            self.giftButtonView.isHidden = true
+            self.MyprofileButtonView.isHidden = false
         }
-        
-        
-        if myProfile == true {
-            
-           
-        }
-        
+     
         if chatProfile == true {
             
             self.chatButtonView.isHidden = true
+            self.MyprofileButtonView.isHidden = true
         }
-
-        // Do any additional setup after loading the view.
+      
+        if self.friendName != "" {
+            self.userName.text = self.friendName
+        }
+        if self.myName != "" {
+            
+            self.userName.text = self.myName
+        }
+        
+        self.statusMessage.text = self.statusmessage
+        
     }
     
-
-
+    
+    
 }
 
 extension UserProfileView : UserProfileProtocol {
@@ -160,7 +173,7 @@ extension UserProfileView : UserProfileProtocol {
             
             favorite = false
         }
-
+        
         
     }
     

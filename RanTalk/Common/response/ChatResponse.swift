@@ -12,7 +12,7 @@ import ObjectMapper
 class ChatResponse: BaseResponse {
 
     var user : User?
-    var data : MyData<MessageData>?
+    var data : MyData<Message>?
     var userId : Int64?
     var hoho : NSArray?
 

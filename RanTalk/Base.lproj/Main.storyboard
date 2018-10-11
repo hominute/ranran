@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rantalkSplashImage" translatesAutoresizingMaskIntoConstraints="NO" id="9vo-RT-FbZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashImage" translatesAutoresizingMaskIntoConstraints="NO" id="9vo-RT-FbZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
@@ -431,19 +431,19 @@
                                         <rect key="frame" x="87.5" y="112" width="200" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9M-xl-OvD">
-                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="qFK-kO-Tek">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="31.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="채팅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-BI-7Rb">
-                                                        <rect key="frame" x="0.0" y="36.5" width="53.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="35" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6h-gO-1nN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
                                                         <connections>
                                                             <action selector="chat:" destination="9I5-ps-6Mo" eventType="touchUpInside" id="cWC-Vc-qM2"/>
                                                         </connections>
@@ -465,19 +465,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRZ-CO-6El">
-                                                <rect key="frame" x="73.5" y="0.0" width="53" height="50"/>
+                                                <rect key="frame" x="55" y="0.0" width="35" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starballoon" translatesAutoresizingMaskIntoConstraints="NO" id="dUb-hv-KNV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="31.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="선물" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCG-PB-ebJ">
-                                                        <rect key="frame" x="0.0" y="36.5" width="53" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="35" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bU-aJ-Swl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
                                                         <connections>
                                                             <action selector="gift:" destination="9I5-ps-6Mo" eventType="touchUpInside" id="gnr-iT-iKS"/>
                                                         </connections>
@@ -499,19 +499,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfY-jS-qc2">
-                                                <rect key="frame" x="146.5" y="0.0" width="53.5" height="50"/>
+                                                <rect key="frame" x="110" y="0.0" width="35" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ban" translatesAutoresizingMaskIntoConstraints="NO" id="L4V-54-NeO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="31.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="차단" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-e7-02U">
-                                                        <rect key="frame" x="0.0" y="36.5" width="53.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="35" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwi-FN-gvg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
                                                         <connections>
                                                             <action selector="ban:" destination="9I5-ps-6Mo" eventType="touchUpInside" id="aRS-d7-a5v"/>
                                                         </connections>
@@ -530,6 +530,40 @@
                                                     <constraint firstAttribute="trailing" secondItem="qwi-FN-gvg" secondAttribute="trailing" id="nz7-Ur-GFB"/>
                                                     <constraint firstItem="qwi-FN-gvg" firstAttribute="leading" secondItem="yfY-jS-qc2" secondAttribute="leading" id="oaE-6T-H9m"/>
                                                     <constraint firstItem="KaL-e7-02U" firstAttribute="top" secondItem="L4V-54-NeO" secondAttribute="bottom" constant="5" id="syF-Jd-ifX"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYm-tt-oU2">
+                                                <rect key="frame" x="165" y="0.0" width="35" height="50"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editprofile" translatesAutoresizingMaskIntoConstraints="NO" id="eJ6-Nj-mB0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="31.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="프로필 설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orN-Qj-epn">
+                                                        <rect key="frame" x="0.0" y="36.5" width="35" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-Fh-S5E">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
+                                                        <connections>
+                                                            <action selector="myprofile:" destination="9I5-ps-6Mo" eventType="touchUpInside" id="tBt-hi-SYD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="eJ6-Nj-mB0" firstAttribute="top" secondItem="tYm-tt-oU2" secondAttribute="top" id="9i3-V6-hMI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fMu-Fh-S5E" secondAttribute="trailing" id="DV0-xP-Nf8"/>
+                                                    <constraint firstItem="orN-Qj-epn" firstAttribute="leading" secondItem="tYm-tt-oU2" secondAttribute="leading" id="Hvb-gO-NzQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eJ6-Nj-mB0" secondAttribute="trailing" id="Lml-Pq-rzT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="orN-Qj-epn" secondAttribute="trailing" id="QHV-GC-6bD"/>
+                                                    <constraint firstItem="fMu-Fh-S5E" firstAttribute="leading" secondItem="tYm-tt-oU2" secondAttribute="leading" id="bG5-7b-LEi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="orN-Qj-epn" secondAttribute="bottom" id="cpM-nu-pqA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fMu-Fh-S5E" secondAttribute="bottom" id="fgS-ha-tfR"/>
+                                                    <constraint firstItem="eJ6-Nj-mB0" firstAttribute="leading" secondItem="tYm-tt-oU2" secondAttribute="leading" id="gs2-fY-UON"/>
+                                                    <constraint firstItem="fMu-Fh-S5E" firstAttribute="top" secondItem="tYm-tt-oU2" secondAttribute="top" id="iO2-0a-UuS"/>
+                                                    <constraint firstItem="orN-Qj-epn" firstAttribute="top" secondItem="eJ6-Nj-mB0" secondAttribute="bottom" constant="5" id="j0X-6P-1uZ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -666,6 +700,7 @@
                         <viewLayoutGuide key="safeArea" id="DVn-C5-Gz7"/>
                     </view>
                     <connections>
+                        <outlet property="MyprofileButtonView" destination="tYm-tt-oU2" id="nmj-Ij-w6R"/>
                         <outlet property="banButtonView" destination="yfY-jS-qc2" id="r2c-Ch-22a"/>
                         <outlet property="chatButtonView" destination="B9M-xl-OvD" id="KkB-C1-UzM"/>
                         <outlet property="giftButtonView" destination="xRZ-CO-6El" id="W9d-BQ-Ech"/>
@@ -1132,10 +1167,11 @@
         <image name="cancel" width="1280" height="1280"/>
         <image name="chat" width="282" height="231"/>
         <image name="chattabicon" width="40" height="40"/>
+        <image name="editprofile" width="960" height="960"/>
         <image name="moreimage" width="1280" height="1044"/>
         <image name="moretabicon" width="40" height="40"/>
         <image name="notify" width="1173" height="1280"/>
-        <image name="rantalkSplashImage" width="640" height="1136"/>
+        <image name="splashImage" width="1280" height="2272"/>
         <image name="starballoon" width="1116" height="1063"/>
         <image name="userlisttabicon" width="40" height="40"/>
     </resources>

@@ -16,7 +16,7 @@ protocol ChatViewProtocol {
     func refreshRange()
     func clearInputTextField()
     func apiCallback(response: ChatResponse)
-    func addChat(chat: MessageData)
+    func addChat(chat: Message)
     func moreMessageCallback(response: ChatResponse)
     func scrollToBottom()
     func scrollToVisibleBottom()
@@ -62,7 +62,7 @@ class ChatView: UIViewController, UserinfoProtocol, UserProfileProtocols{
     
     var lastrow : Int?
     var lastsection : Int?
-    var list = [MessageData]() // todo set
+    var list = [Message]() // todo set
     var indexPath: IndexPath?
     
     
@@ -331,7 +331,7 @@ extension ChatView : UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func getMyMessageCell (messageData: MessageData, indexPath: IndexPath) -> UITableViewCell {
+    func getMyMessageCell (messageData: Message, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell", for: indexPath) as! MyTableViewCell
         cell.layer.backgroundColor = UIColor.clear.cgColor
@@ -369,7 +369,7 @@ extension ChatView : UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func getOtherMessageCell (messageData: MessageData, indexPath: IndexPath) -> UITableViewCell {
+    func getOtherMessageCell (messageData: Message, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherTableViewCell", for: indexPath) as! OtherTableViewCell
         
@@ -528,7 +528,7 @@ extension ChatView : ChatViewProtocol {
     }
     
     
-    func addChat(chat: MessageData) {
+    func addChat(chat: Message) {
         self.list.append(chat)
         
         DispatchQueue.main.async {

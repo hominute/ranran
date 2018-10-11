@@ -12,7 +12,7 @@ import ObjectMapper
 class UserListResponse: BaseResponse {
 
     var user : User?
-    var data : MyData<List>?
+    var data : MyData<UserList>?
     var userId : Int64?
 
     

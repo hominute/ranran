@@ -95,10 +95,7 @@ class ChatListView: UITableViewController, ChatProtocol {
           let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListTableViewCell", for: indexPath) as! ChatListTableViewCell
         let row = self.list[indexPath.row]
         let imageurl = row.friendInfo?.photo
-        
-    
-        
-  
+
         cell.lastMessage.text = row.lastchat
         cell.roomId = row.roomId!
         cell.userName.text = row.friendInfo?.name

@@ -13,12 +13,12 @@ import Kingfisher
 
 protocol UserListProtocol {
     
-    func apiCallback(response: UserListResponse)
     func inviteApiCallback(response: InviteResponse)
     func setTitle(title: String)
-    func displayMessage(message: String)
-    func favoriteApiCallback(response: UserListResponse)
-    func mylistApiCallback(response: UserProfileResponse)
+
+    func reloadmyList(data: UserProfileResponse)
+    func reloadfriendList(data: UserListResponse)
+    func reloadfavoriteList(data: UserListResponse)
 }
 
 class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols {
@@ -30,9 +30,9 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
     let presenter = UserListPresenter()
     var roomid = Int64()
     var friendid = Int64()
-    var list = [List]()
-    var favoriteList = [List]()
-    var myList = [List]()
+    var friendList = [UserList]()
+    var favoriteList = [UserList]()
+    var myList = [UserList]()
     var friendName = String()
     var statusmessage = String()
     
@@ -49,26 +49,36 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+        setupView()
+        setupTable()
         presenter.getMyList()
         presenter.attachlistView(view: self)
-        self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 138, green: 176, blue: 212)
         
+        
+        presenter.getTitle()
+        presenter.getFriendList()
+        presenter.getFavoriteList()
     }
     
+    func setupView() {
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 138, green: 176, blue: 212)
+    }
     
+    func setupTable() {
+        
+        self.tableView.backgroundView = UIImageView(image: UIImage(named:"background"))
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         
-        self.tableView.backgroundView = UIImageView(image: UIImage(named:"background"))
         
         
-        presenter.getTitle()
-        presenter.onList()
-        presenter.getFavoriteList()
+        
         
     }
     
@@ -109,7 +119,7 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
         if section == 1 {
             if self.favoriteList.count == 0 {
                 
-                return self.list.count
+                return self.friendList.count
             }
             
             return self.favoriteList.count
@@ -117,7 +127,7 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
             
         }else {
             
-            return self.list.count
+            return self.friendList.count
         }
     }
     
@@ -134,10 +144,8 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
                 
                 return "접속한 사람들"
             }
-            return "찜목록"
-            
-            
-            
+            return "즐겨찾기"
+
         }else{
             
             return "접속한 사람들"
@@ -149,16 +157,15 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
-        //        var mylist : List?
-        var friend : List?
-        //        if self.myList.count != 0
+
+        var friend : UserList?
+
         if indexPath.section == 0 {
             
             friend = myList[indexPath.row]
-            
-            
-            
+     
         }
+        
         if indexPath.section >= 1 {
             
             if indexPath.section == 1 {
@@ -168,15 +175,15 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
                     friend = self.favoriteList[indexPath.row]
                 }else {
                     
-                    if self.list.count != 0 {
-                    friend = self.list[indexPath.row]
+                    if self.friendList.count != 0 {
+                    friend = self.friendList[indexPath.row]
                         
                     }
                 }
             }else {
                 
-                if self.list.count != 0 {
-                    friend = self.list[indexPath.row]
+                if self.friendList.count != 0 {
+                    friend = self.friendList[indexPath.row]
                     
                 }
             }
@@ -184,21 +191,11 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
             
         }
         
-        // todo extract
-        cell.userName.text = friend?.name
-        cell.friendId = (friend?.id)!
-        //        cell.friendName = (friend?.name)!
-        cell.shortMessage.text = friend?.statusMessge
-        
-        cell.imageLoad(imageUrl: friend?.photo)
-        
+
+        cell.setupCell(userlist: friend!)
+
         cell.inviteClickDelegate = self
         cell.profilClickDelegate = self
-        cell.friendName = friend?.name ?? ""
-        cell.statusmessage = friend?.statusMessge ?? "-"
-        
-        
-        
         
         return cell
         
@@ -209,42 +206,16 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        tableView.deselectRow(at: indexPath, animated: true)
-        //        let row = indexPath.row
-        
+    
         let cell = tableView.cellForRow(at: indexPath) as! UserTableViewCell
-        
-        
-        
+ 
         cell.clickProfile()
         
-        
-        
+
     }
     
     
     // Utility Func
-    
-    func displayMessage(message:String) -> Void {
-        DispatchQueue.main.async
-            {
-                let alertController = UIAlertController(title:"Alert", message: message, preferredStyle:.alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                    
-                    print("Ok button tapped")
-                    DispatchQueue.main.async
-                        {
-                            
-                    }
-                }
-                
-                alertController.addAction(OKAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-                
-        }
-    }
-    
     
     
     func inviteClickCallback(friendId: Int64) {
@@ -292,6 +263,28 @@ class UserListView: UITableViewController, InviteProtocol, UserProfileProtocols 
 
 extension UserListView : UserListProtocol {
     
+    func reloadfriendList(data: UserListResponse) {
+        
+        friendList = (data.data?.content)!
+        tableView.reloadData()
+        
+    }
+    
+    func reloadfavoriteList(data: UserListResponse) {
+        
+        favoriteList = (data.data?.content)!
+        tableView.reloadData()
+        
+    }
+    
+    func reloadmyList(data: UserProfileResponse) {
+    
+        myList = [data.data] as! [UserList]
+        tableView.reloadData()
+    }
+    
+
+    
     func inviteApiCallback(response: InviteResponse) {
         
         self.roomid = (response.data?.roomId)!
@@ -299,37 +292,15 @@ extension UserListView : UserListProtocol {
         
         
     }
-    
-    
-    func apiCallback(response: UserListResponse) {
-        
-        let List = (response as! UserListResponse).data?.content
-        if List != nil {
-            self.list = List!
-            self.tableView.reloadData()
-            
-        }
-        
-    }
+
     
     func setTitle(title: String) {
-        
-        
+
         navigationItem.title = title
         
     }
     
-    func favoriteApiCallback(response: UserListResponse) {
-        
-        
-        let favoriteList = response.data?.content
-        if favoriteList != nil {
-            
-            self.favoriteList = favoriteList!
-            self.tableView.reloadData()
-        }
-        
-    }
+
     
     func profileClickCallback(friendId : Int64, friendName: String, statusmessage: String) {
         ImageCache.default.calculateDiskCacheSize(completion:{ size in
@@ -344,15 +315,5 @@ extension UserListView : UserListProtocol {
         performSegue(withIdentifier: "listtoprofile", sender: self)
     }
     
-    func mylistApiCallback(response: UserProfileResponse) {
-        
-        let myList = response.data
-        
-        if myList != nil {
-            
-            self.myList = [myList!]
-            self.tableView.reloadData()
-        }
-        
-    }
+
 }

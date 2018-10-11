@@ -154,7 +154,7 @@ class ChatPresenter: StompClientLibDelegate {
             let messagedatas = try JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
             
             
-            let md = MessageData()
+            let md = Message()
             
             
             md.userId = messagedatas["userId"] as? Int64

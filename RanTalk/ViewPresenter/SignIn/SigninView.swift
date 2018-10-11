@@ -66,13 +66,13 @@ class SigninView: UIViewController {
         
         if (signinId.text?.isEmpty)! {
             
-            displayMessage(userMessage: "아이디를 입력하세요")
+            self.displayMessage(message: "아이디를 입력하세요")
             
             return
             
         } else if (signinPassword.text?.isEmpty)! {
             
-            displayMessage(userMessage: "암호를 입력하세요")
+            self.displayMessage(message: "암호를 입력하세요")
             
             return
             
@@ -140,23 +140,7 @@ class SigninView: UIViewController {
     }
     
     
-    @objc func displayMessage(userMessage:String) -> Void {
-        DispatchQueue.main.async
-            {
-                let alertController = UIAlertController(title:"Alert", message: userMessage, preferredStyle:.alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default)
-                { (action:UIAlertAction!) in
-                    
-                    print("Ok button tapped")
-                    
-                }
-                
-                alertController.addAction(OKAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-        }
-    }
-    
+
 }
 
 extension SigninView : SigninProtocol {
@@ -193,12 +177,7 @@ extension SigninView : SigninProtocol {
         print(message)
         
        
-        
-//        let uds = UserDefaults.standard
-//
-//        let name = uds.string(forKey: "name")
-//        let emails = uds.string(forKey: "logined")
-//        dialog(message: message, error: false)
+
     }
     func navigation() {
         
@@ -214,15 +193,7 @@ extension SigninView : SigninProtocol {
 //        dialog(message: message, error: true)
     }
     
-    func dialog(message : String, error: Bool){
-        let uiAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        self.present(uiAlert, animated: true, completion: nil)
-        uiAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            if !error {
-//                Navigator.onMoveToHome(view: self)
-            }
-        }))
-    }
+
     
     
 }

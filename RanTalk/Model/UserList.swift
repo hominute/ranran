@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class List : Mappable {
+class UserList : Mappable {
     
     var id : Int64?
     var email : String?
